@@ -5,11 +5,14 @@
 
 #include <GL/glut.h>
 
-
+int flag = 0;
 float angle = 0.0f;
 float angley = 0.0f;
+int go1 = 0;
+int gol2 = 0;
 
-float x1 = 200;
+float x1 = 1;
+float y2 = 1;
 
 float lx=0.0f,lz=-1.0f, ly = 0.0f;
 
@@ -61,36 +64,6 @@ void changeSize(int w1,int h1) {
 
 }
 
-void drawSnowMan() {
-
-  glColor3f(1.0f, 1.0f, 1.0f);
-
-  // Draw Body
-  glTranslatef(0.0f ,0.75f, 0.0f);
-  glutSolidSphere(0.75f,20,20);
-
-  // Draw Head
-  glTranslatef(0.0f, 1.0f, 0.0f);
-  glutSolidSphere(0.25f,20,20);
-
-  // Draw Eyes
-  glPushMatrix();
-  glColor3f(0.0f,0.0f,0.0f);
-  glTranslatef(0.05f, 0.10f, 0.18f);
-  glutSolidSphere(0.05f,10,10);
-  glTranslatef(-0.1f, 0.0f, 0.0f);
-  glutSolidSphere(0.05f,10,10);
-  glPopMatrix();
-
-  // Draw Nose
-  glColor3f(1.0f, 0.5f, 0.5f);
-  glRotatef(0.0f,1.0f, 0.0f, 0.0f);
-  glutSolidCone(0.08f,0.5f,10,2);
-
-  glColor3f(1.0f, 1.0f, 1.0f);
-
-}
-
 void computePos(float deltaMove) {
 
   x += deltaMove * lx * 0.1f;
@@ -123,171 +96,9 @@ void draw1(){
 
 }
 
-void drawLadder(){
-  for(int i = 0, j = 2; i <= 75; i += 5, j += 3){
-    glPushMatrix();
-    glColor3f(0.5, 0.5, 0.8);
-      glTranslatef( 0.0, j, -i);
-      glScalef(30.0, 2.0, 8.0);
-      glutSolidCube(1.0);
-    glPopMatrix();
-  }
-
-  
-
-  glPushMatrix();
-    glColor3f(0.0, 0.0, 0.5);
-    glTranslatef(15.0, 0.0, 0.0);
-    glRotatef(-59.0,1.0, 0.0, 0.0);
-    glScalef(2.0, 200.0, 10.0);
-
-    glutSolidCube(1.0);
-  glPopMatrix();
-  
-
-  glPushMatrix();
-    glColor3f(0.0, 0.0, 0.5);
-    glTranslatef(-16.0, 0.0, 0.0);
-    glRotatef(-59.0, 1.0, 0.0, 0.0);
-    glScalef(2.0, 185.0, 10.0);
-
-    glutSolidCube(1.0);
-  glPopMatrix();
-
-  glPushMatrix();
-    glTranslatef(-62.0, 54.0, -93.0);
-    glRotatef(90.0, 0.0, 1.0, 0.0);
-    for(int i = -5, j = -1; i <= 70; i += 5, j += 3){
-      glPushMatrix();
-      glColor3f(0.5, 0.5, 0.8);
-        glTranslatef( 0.0, j, -i);
-        glScalef(30.0, 2.0, 8.0);
-        glutSolidCube(1.0);
-      glPopMatrix();
-    }
-    
-  
-
-  glPushMatrix();
-    glColor3f(0.0, 0.0, 0.5);
-    glTranslatef(15.0, 23.0, -35.0);
-    glRotatef(-59.0,1.0, 0.0, 0.0);
-    glScalef(2.0, 100.0, 10.0);
-
-    glutSolidCube(1.0);
-  glPopMatrix();
-  
-
-  glPushMatrix();
-    glColor3f(0.0, 0.0, 0.5);
-    glTranslatef(-16.0, 23.0, -35.0);
-    glRotatef(-59.0, 1.0, 0.0, 0.0);
-    glScalef(2.0, 101.0, 10.0);
-
-    glutSolidCube(1.0);
-  glPopMatrix();    
-  glPopMatrix();
-
-
-  //
-
-  glPushMatrix();
-    glTranslatef(-40.0,0.0,0.0);
-    glPushMatrix();
-      glColor3f(0.8, 0.8, 0.8);
-        glTranslatef( 20.5, 50, -93);
-        glScalef(70.0, 1.0, 30.0);
-        glutSolidCube(1.0);
-    glPopMatrix();
-
-
-    glPushMatrix();
-      glColor3f(0.0, 0.0, 0.5);
-      glTranslatef(19.5, 51.5, -108.0);
-      glScalef(73.0, 9.0, 2.0);
-
-      glutSolidCube(1.0);
-
-    glPopMatrix();
-
-    glPushMatrix();
-      glColor3f(0.0, 0.0, 0.5);
-      glTranslatef(55.0, 51.5, -93.0);
-      glScalef(2.0, 9.0, 32.0);
-      glutSolidCube(1.0);
-
-    glPopMatrix();
-
-    glPushMatrix();
-      glColor3f(0.0, 0.0, 0.5);
-      glTranslatef(4.0, 51.5, -77.0);
-      glScalef(42.0, 9.0, 2.0);
-
-      glutSolidCube(1.0);
-
-    glPopMatrix();
-  glPopMatrix();
 
 
 
-}
-
-void drawWindows(){
-
-  for(int i = -275; i < 300; i += 31){
-  glPushMatrix();
-    glTranslatef(i, 0.0, 0.0);
-    
-    glPushMatrix();
-      glColor3f(1.0,1.0,1.0);
-      glTranslatef(0.0, 123.0, 208.0);
-      glScalef(30.0, 54.0, 1.0);
-      glutSolidCube(1.0);
-    glPopMatrix();
-  
-    glPushMatrix();
-      glColor3f(0.2,1.0,1.0);
-
-      glTranslatef(15.5, 123.0, 208.0);
-      glScalef(1.0, 54.0, 1.0);
-
-      glutSolidCube(1.0);
-    glPopMatrix();
-
-    glPushMatrix();
-      glColor3f(0.2,1.0,1.0);
-
-      glTranslatef(-15.5, 123.0, 208.0);
-      glScalef(1.0, 54.0, 1.0);
-
-      glutSolidCube(1.0);
-    glPopMatrix();
-
-    glPushMatrix();
-      glColor3f(0.2,1.0,1.0);
-
-      glTranslatef(0.0, 150.5, 208.0);
-      glScalef(32.0, 1.0, 1.0);
-
-      glutSolidCube(1.0);
-
-
-    glPopMatrix();
-
-    glPushMatrix();
-      glColor3f(0.2,1.0,1.0);
-
-      glTranslatef(0.0, 95.5, 208.0);
-      glScalef(32.0, 1.0, 1.0);
-
-      glutSolidCube(1.0);
-
-
-  glPopMatrix();
-  glPopMatrix();
-}
-
-}
 
 void myCube(){
   glPushMatrix();
@@ -746,6 +557,7 @@ void secondFloor(){
 
 void elevator(){
   glPushMatrix();
+  
   glColor3f(0,0,0);
   glBegin(GL_QUADS);
     glVertex3f(292, 0, -128.721);
@@ -753,7 +565,7 @@ void elevator(){
     glVertex3f(292, 203, -126.721);
     glVertex3f(292, 203, -128.721);
   glEnd();
-
+  glColor3f(0,0,0);
   glBegin(GL_QUADS);
     glVertex3f(292, 0, -90.721);
     glVertex3f(292, 0, -88.721);
@@ -761,6 +573,18 @@ void elevator(){
     glVertex3f(292, 203, -90.721);
   glEnd();
 
+  glEnable(GL_BLEND);
+      glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+      glColor4f(1,1,1,0.3);
+  glBegin(GL_QUADS);
+    glVertex3f( 292, 40,-90.721);
+    glVertex3f( 292, 79,-90.721);
+    glVertex3f( 292, 79,-126.721);
+    glVertex3f( 292, 40,-126.721);
+  glEnd();
+  glDisable(GL_BLEND);
+
+  glColor3f(0,0,0);
   glBegin(GL_QUADS);
     glVertex3f(332, 0, -128.721);
     glVertex3f(332, 0, -126.721);
@@ -768,6 +592,7 @@ void elevator(){
     glVertex3f(332, 203, -128.721);
   glEnd();
 
+  glColor3f(0,0,0);
   glBegin(GL_QUADS);
     glVertex3f(332, 0, -90.721);
     glVertex3f(332, 0, -88.721);
@@ -775,7 +600,19 @@ void elevator(){
     glVertex3f(332, 203, -90.721);
   glEnd();
 
+  glEnable(GL_BLEND);
+      glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+      glColor4f(1,1,1,0.3);
+  glBegin(GL_QUADS);
+    glVertex3f( 332, 0,-90.721);
+    glVertex3f( 332, 79,-90.721);
+    glVertex3f( 332, 79,-126.721);
+    glVertex3f( 332, 0,-126.721);
+  glEnd();
 
+  glDisable(GL_BLEND);
+
+  glColor3f(0,0,0);
   glBegin(GL_QUADS);
     glVertex3f(332, 0, -128.721);
     glVertex3f(330, 0, -128.721);
@@ -783,6 +620,7 @@ void elevator(){
     glVertex3f(332, 203, -128.721);
   glEnd();
 
+  glColor3f(0,0,0);
   glBegin(GL_QUADS);
     glVertex3f(294, 0, -128.721);
     glVertex3f(292, 0, -128.721);
@@ -790,6 +628,20 @@ void elevator(){
     glVertex3f(294, 203, -128.721);
   glEnd();
 
+  glEnable(GL_BLEND);
+      glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+      glColor4f(1,1,1,0.3);
+
+  glBegin(GL_QUADS);
+    glVertex3f(294, 0, -128.721);
+    glVertex3f(330, 0, -128.721);
+    glVertex3f(330, 203, -128.721);
+    glVertex3f(294, 203, -128.721);
+  glEnd();
+
+  glDisable(GL_BLEND);
+
+  glColor3f(0,0,0);
   glBegin(GL_QUADS);
     glVertex3f(332, 0, -88.721);
     glVertex3f(330, 0, -88.721);
@@ -797,12 +649,94 @@ void elevator(){
     glVertex3f(332, 203, -88.721);
   glEnd();
 
+  glColor3f(0,0,0);
   glBegin(GL_QUADS);
     glVertex3f(294, 0, -88.721);
     glVertex3f(292, 0, -88.721);
     glVertex3f(292, 203, -88.721);
     glVertex3f(294, 203, -88.721);
   glEnd();
+
+  glEnable(GL_BLEND);
+      glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+      glColor4f(1,1,1,0.3);
+  glBegin(GL_QUADS);
+    glVertex3f(294, 0, -88.721);
+    glVertex3f(330, 0, -88.721);
+    glVertex3f(330, 203, -88.721);
+    glVertex3f(294, 203, -88.721);
+  glEnd();
+
+  glDisable(GL_BLEND);
+
+  //porta do elevador
+
+  glEnable(GL_BLEND);
+      glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+      glColor4f(0,0,0,0.2);
+  glBegin(GL_QUADS);
+    glVertex3f(292, 0, -90.721);
+    glVertex3f(292, 0, -108.621 + x1);
+    glVertex3f(292, 40, -108.621 + x1);
+    glVertex3f(292, 40, -90.721);
+  glEnd();
+
+  glBegin(GL_QUADS);
+    glVertex3f(293, 0, -90.721);
+    glVertex3f(293, 0, -108.621 + x1);
+    glVertex3f(293, 40, -108.621 + x1);
+    glVertex3f(293, 40, -90.721);
+  glEnd();
+
+  glBegin(GL_QUADS);
+    glVertex3f(292, 0, -108.621 + x1);
+    glVertex3f(292, 40, -108.621 + x1);
+    glVertex3f(293, 40, -108.621 + x1);
+    glVertex3f(293, 0, -108.621 + x1);
+  glEnd();
+
+
+
+
+
+
+  glBegin(GL_QUADS);
+    glVertex3f(292, 0, -126.721);
+    glVertex3f(292, 0, -108.721 - x1);
+    glVertex3f(292, 40, -108.721 - x1);
+    glVertex3f(292, 40, -126.721);
+  glEnd();
+
+  glBegin(GL_QUADS);
+    glVertex3f(293, 0, -126.721);
+    glVertex3f(293, 0, -108.721 - x1);
+    glVertex3f(293, 40, -108.721 - x1);
+    glVertex3f(293, 40, -126.721);
+  glEnd();
+
+  glBegin(GL_QUADS);
+    glVertex3f(292, 0, -108.721 - x1);
+    glVertex3f(292, 40, -108.721 - x1);
+    glVertex3f(293, 40, -108.721 - x1);
+    glVertex3f(293, 0, -108.721 - x1);
+  glEnd();
+
+  glDisable(GL_BLEND);
+
+  //porta do elevador
+
+  glColor3f(0, 1,0);
+  glBegin(GL_QUADS);
+  glVertex3f(294, y2, -128.521);
+  glVertex3f(332, y2, -128.521);
+  glVertex3f(332, y2, -89.521);
+  glVertex3f(294, y2, -89.521);
+
+  glEnd();
+
+  
+
+
   glPopMatrix();
 
 }
@@ -2357,10 +2291,17 @@ void pictures(){
 
 void Timer(int value)
 {
-    
-     x1-=1;
+    if(x1 != 14 && flag == 1)
+     x1++;
+
+    if(x1 != 1 && flag == 2)
+      x1--;
+    if(y2 != 84 && flag == 3)
+      y2++;
+    if(y2 != 1 && flag == 4)
+      y2--;
     glutPostRedisplay();
-    glutTimerFunc(33,Timer, 1);
+    glutTimerFunc(433,Timer, 1);
 }
 
 // Common Render Items for all subwindows
@@ -2413,15 +2354,8 @@ void renderScene2() { //desenha os objetos
   support();
 
   pictures();
-  glColor3f(0,0,1);
-  glBegin(GL_QUADS);
-    glVertex3f(-x1,0,0);
-    glVertex3f(x1,0,0);
-    glVertex3f(x1,50,0);
-    glVertex3f(-x1,50,0);
-
-  glEnd();
-
+  
+  
   
   
 
@@ -2473,12 +2407,16 @@ void processNormalKeys(unsigned char key, int xx, int yy) {
 
   switch (key){
     case 'w':
+        flag = 1;
         break;
     case 's':
+    flag = 2;
         break;
     case 'a':
+    flag = 3;
         break;
     case 'd':
+    flag = 4;
         break;
   }
 }
@@ -2567,7 +2505,7 @@ void init() {
   glutSpecialUpFunc(releaseKey);
   glutMouseFunc(mouseButton);
   glutMotionFunc(mouseMove);
-  glutTimerFunc(33, Timer, 1);
+  glutTimerFunc(133, Timer, 1);
 
 }
 
