@@ -3,7 +3,12 @@
 #include <math.h>
 
 
+
 #include <GL/glut.h>
+#include <SFML/Graphics.hpp>
+#include <fstream>
+
+
 
 int flag = 0;
 float angle = 0.0f;
@@ -29,6 +34,37 @@ int h,w;
 
 int mainWindow, subWindow1;
 int border = 6;
+
+GLuint texture_id[20];
+
+void loadTextureFromFile(char const *filename,int index) {
+  int width, height, c;
+  c = 3;
+  std::ifstream file(filename);
+  if(! file.good())
+    throw "file not found";
+  file.close();
+
+sf::Image image;
+image.loadFromFile(filename);
+
+    printf("%d %d\n", width, height);
+
+  glGenTextures(1, &texture_id[index]);
+  glBindTexture(GL_TEXTURE_2D, texture_id[index]);
+
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.getSize().x, image.getSize().y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image.getPixelsPtr());
+  glBindTexture(GL_TEXTURE_2D, 0);
+}
+
+void initTextures(){
+  loadTextureFromFile("piso.jpg", 0);
+  
+  
+}
 
 void setProjection(int w1, int h1)
 {
@@ -71,7 +107,7 @@ void computePos(float deltaMove) {
   y += deltaMove * ly * 0.1f;
 }
 
-void draw1(){
+/*void draw1(){
   
   glPushMatrix();
   glColor3f(1.0,0.0,0.0);
@@ -94,7 +130,7 @@ void draw1(){
   glutSolidCube(1.0);
   glPopMatrix();
 
-}
+}*/
 
 
 
@@ -103,7 +139,8 @@ void draw1(){
 void myCube(){
   glPushMatrix();
     
-    glBegin(GL_POLYGON);     
+    glBegin(GL_POLYGON);
+      glNormal3f(0,0,-1);    
       glVertex3f(  0.5, -0.5, -0.5 );      
       glVertex3f(  0.5,  0.5, -0.5 );      
       glVertex3f( -0.5,  0.5, -0.5 );      
@@ -112,6 +149,7 @@ void myCube(){
     glEnd();
     
     glBegin(GL_POLYGON);
+    glNormal3f(0,0,1);
       glVertex3f(  0.5, -0.5, 0.5 );
       glVertex3f(  0.5,  0.5, 0.5 );
       glVertex3f( -0.5,  0.5, 0.5 );
@@ -120,6 +158,7 @@ void myCube(){
      
     // Lado roxo - DIREITA
     glBegin(GL_POLYGON);
+    glNormal3f(1,0,0);
       glVertex3f( 0.5, -0.5, -0.5 );
       glVertex3f( 0.5,  0.5, -0.5 );
       glVertex3f( 0.5,  0.5,  0.5 );
@@ -128,6 +167,7 @@ void myCube(){
      
     // Lado verde - ESQUERDA
     glBegin(GL_POLYGON);
+      glNormal3f(-1,0,0);
       glVertex3f( -0.5, -0.5,  0.5 );
       glVertex3f( -0.5,  0.5,  0.5 );
       glVertex3f( -0.5,  0.5, -0.5 );
@@ -136,6 +176,7 @@ void myCube(){
      
     // Lado azul - TOPO
     glBegin(GL_POLYGON);
+      glNormal3f(0,1,0);
       glVertex3f(  0.5,  0.5,  0.5 );
       glVertex3f(  0.5,  0.5, -0.5 );
       glVertex3f( -0.5,  0.5, -0.5 );
@@ -144,6 +185,7 @@ void myCube(){
      
     // Lado vermelho - BASE
     glBegin(GL_POLYGON);
+      glNormal3f(0,-1,0);
       glVertex3f(  0.5, -0.5, -0.5 );
       glVertex3f(  0.5, -0.5,  0.5 );
       glVertex3f( -0.5, -0.5,  0.5 );
@@ -157,6 +199,7 @@ void firstFloor(){
   
     glColor4f(1, 0, 0 , 0.3);
     glBegin(GL_QUADS);
+      glNormal3f(0,-1,0);
       glVertex3f( -370, 79, -150);
       glVertex3f( -370, 79, 150);
       glVertex3f( 292, 79, 150);
@@ -165,6 +208,7 @@ void firstFloor(){
 
   glColor3f(1,1,0);
   glBegin(GL_QUADS);
+    glNormal3f(0,-1,0);
     glVertex3f( 292, 79, 150);
     glVertex3f( 370, 79, 150);
     glVertex3f( 370, 79, 40.236);
@@ -173,6 +217,7 @@ void firstFloor(){
 
   glColor3f(1,0,1);
   glBegin(GL_QUADS);
+    glNormal3f(0,-1,0);
     glVertex3f( 370, 79, 40.236);
     glVertex3f( 332, 79, 40.236);
     glVertex3f( 332, 79, -150);
@@ -182,6 +227,7 @@ void firstFloor(){
 
   glColor3f(0,0,1);
   glBegin(GL_QUADS);
+      glNormal3f(0,-1,0);
     glVertex3f( 332, 79, -150);
     glVertex3f( 332, 79, -128.721);
     glVertex3f( 292, 79, -128.721);
@@ -190,15 +236,19 @@ void firstFloor(){
 
   glColor3f(1,0.4,1);
   glBegin(GL_QUADS);
+    glNormal3f(0,-1,0);
     glVertex3f( 332, 79, -88.721);
     glVertex3f( 292, 79, -88.721);
     glVertex3f( 292, 79, -53.48);
     glVertex3f( 332, 79, -53.48);
   glEnd();
-
+  
   //
+  
+
   glColor3f(1, 0, 0);
     glBegin(GL_QUADS);
+      glNormal3f(0,1,0);
       glVertex3f( -370, 83.740, -150);
       glVertex3f( -370, 83.740, 150);
       glVertex3f( 292, 83.740, 150);
@@ -207,6 +257,7 @@ void firstFloor(){
 
   glColor3f(1,1,0);
   glBegin(GL_QUADS);
+    glNormal3f(0,1,0);
     glVertex3f( 292, 83.740, 150);
     glVertex3f( 370, 83.740, 150);
     glVertex3f( 370, 83.740, 40.236);
@@ -215,6 +266,7 @@ void firstFloor(){
 
   glColor3f(1,0,1);
   glBegin(GL_QUADS);
+    glNormal3f(0,1,0);
     glVertex3f( 370, 83.740, 40.236);
     glVertex3f( 332, 83.740, 40.236);
     glVertex3f( 332, 83.740, -150);
@@ -224,6 +276,7 @@ void firstFloor(){
 
   glColor3f(0,0,1);
   glBegin(GL_QUADS);
+    glNormal3f(0,1,0);
     glVertex3f( 332, 83.740, -150);
     glVertex3f( 332, 83.740, -128.721);
     glVertex3f( 292, 83.740, -128.721);
@@ -232,16 +285,19 @@ void firstFloor(){
 
   glColor3f(1,0.4,1);
   glBegin(GL_QUADS);
+    glNormal3f(0,1,0);
     glVertex3f( 332, 83.740, -88.721);
     glVertex3f( 292, 83.740, -88.721);
     glVertex3f( 292, 83.740, -53.48);
     glVertex3f( 332, 83.740, -53.48);
   glEnd();
+  
 
   //
 
   glColor3f(0.4,0.4,1);
   glBegin(GL_QUADS);
+    glNormal3f(0,0,1);
     glVertex3f( -370, 79, 150);
     glVertex3f( 370, 79, 150);
     glVertex3f( 370, 83.740, 150);
@@ -250,6 +306,7 @@ void firstFloor(){
   glEnd();
 
   glBegin(GL_QUADS);
+    glNormal3f(0,0,-1);
     glVertex3f( -370, 79, -150);
     glVertex3f( 370, 79, -150);
     glVertex3f( 370, 83.740, -150);
@@ -257,15 +314,10 @@ void firstFloor(){
     
   glEnd();
 
-  glBegin(GL_QUADS);
-    glVertex3f( -370, 79, 150);
-    glVertex3f( 370, 79, 150);
-    glVertex3f( 370, 83.740, 150);
-    glVertex3f( -370, 83.740, 150);
-    
-  glEnd();
+  
 
   glBegin(GL_QUADS);
+  glNormal3f(-1,0,0);
     glVertex3f( -370, 79, 150);
     glVertex3f( -370, 79, -150);
     glVertex3f( -370, 83.740, -150);
@@ -274,6 +326,7 @@ void firstFloor(){
   glEnd();
 
   glBegin(GL_QUADS);
+  glNormal3f(1,0,0);
     glVertex3f( 370, 79, 150);
     glVertex3f( 370, 79, -150);
     glVertex3f( 370, 83.740, -150);
@@ -282,6 +335,7 @@ void firstFloor(){
   glEnd();
 
   glBegin(GL_QUADS);
+  glNormal3f(0,0,-1);
     glVertex3f(332, 79,40.236);
     glVertex3f(292, 79,40.236);
     glVertex3f(292, 83.740,40.236);
@@ -290,6 +344,7 @@ void firstFloor(){
   glEnd();
 
   glBegin(GL_QUADS);
+  glNormal3f(0,0,1);
     glVertex3f(332, 79, -53.48);
     glVertex3f(292, 79, -53.48);
     glVertex3f(292, 83.740, -53.48);
@@ -297,6 +352,7 @@ void firstFloor(){
   glEnd();
 
   glBegin(GL_QUADS);
+  glNormal3f(1,0,0);
     glVertex3f(292, 79, -53.48);
     glVertex3f(292, 79, 40.236);
     glVertex3f(292, 83.740, 40.236);
@@ -304,12 +360,15 @@ void firstFloor(){
   glEnd();
 
   glBegin(GL_QUADS);
+  glNormal3f(-1,0,0);
     glVertex3f(332, 79, -53.48);
     glVertex3f(332, 79, 40.236);
     glVertex3f(332, 83.740, 40.236);
     glVertex3f(332, 83.740, -53.48);
   glEnd();
 
+
+  /*
   glBegin(GL_QUADS);
     glVertex3f(292, 79, -128.721);
     glVertex3f(292, 79, -88.721);
@@ -337,14 +396,17 @@ void firstFloor(){
     glVertex3f(292, 83.740, -88.721);
     glVertex3f(332, 83.740, -88.721);
   glEnd();
+  */
 
   glPopMatrix();
 }
 
 void secondFloor(){ 
   glPushMatrix();
+  
     glColor3f(0.1, 0.9, 0.3);
     glBegin(GL_QUADS);
+    glNormal3f(0,-1,0);
       glVertex3f( -370, 143.5, -150);
       glVertex3f( -370, 143.5, 150);
       glVertex3f( 253.029, 143.5, 150);
@@ -353,6 +415,7 @@ void secondFloor(){
 
     glColor3f(1,0,0);
     glBegin(GL_QUADS);
+    glNormal3f(0,-1,0);
       glVertex3f(253.029, 143.5, 150);
       glVertex3f(253.029, 143.5, 44.236);
       glVertex3f(370, 143.5, 44.236);
@@ -362,6 +425,7 @@ void secondFloor(){
 
     glColor3f(1, 0.2, 0.2);
     glBegin(GL_QUADS);
+      glNormal3f(0,-1,0);
       glVertex3f(293.029,143.5,44.236);
       glVertex3f(370,143.5,44.236);
       glVertex3f(370,143.5, -49.48);
@@ -370,6 +434,7 @@ void secondFloor(){
 
     glColor3f(0.1,0.2, 0.3);
     glBegin(GL_QUADS);
+    glNormal3f(0,-1,0);
       glVertex3f( 253.029, 143.5, -150);
       glVertex3f( 253.029, 143.5, -128.721);
       glVertex3f( 370, 143.5, -128.721);
@@ -378,6 +443,7 @@ void secondFloor(){
 
     glColor3f(1,0.2, 0.3);
     glBegin(GL_QUADS);
+    glNormal3f(0,-1,0);
       glVertex3f( 332, 143.5, -128.721);
       glVertex3f( 370, 143.5, -128.721);
       glVertex3f( 370, 143.5, -49.48);
@@ -386,6 +452,7 @@ void secondFloor(){
 
     glColor3f(1,0.5, 0.5);
     glBegin(GL_QUADS);
+    glNormal3f(0,-1,0);
       glVertex3f( 253.029, 143.5, -88.721);
       glVertex3f( 332, 143.5, -88.721);
       glVertex3f( 332.029, 143.5, -49.48);
@@ -394,6 +461,7 @@ void secondFloor(){
 
     glColor3f(1, 0, 0);
     glBegin(GL_QUADS);
+    glNormal3f(0,-1,0);
       glVertex3f( 253.029, 143.5, -128.721);
       glVertex3f( 253.029, 143.5, -88.721);
       glVertex3f( 292, 143.5, -88.721);
@@ -403,6 +471,7 @@ void secondFloor(){
     //
     glColor3f(0.1, 0.9, 0.3);
     glBegin(GL_QUADS);
+    glNormal3f(0,1,0);
       glVertex3f( -370, 144.5, -150);
       glVertex3f( -370, 144.5, 150);
       glVertex3f( 253.029, 144.5, 150);
@@ -411,6 +480,7 @@ void secondFloor(){
 
     glColor3f(1,0,0);
     glBegin(GL_QUADS);
+    glNormal3f(0,1,0);
       glVertex3f(253.029, 144.5, 150);
       glVertex3f(253.029, 144.5, 44.236);
       glVertex3f(370, 144.5, 44.236);
@@ -420,6 +490,7 @@ void secondFloor(){
 
     glColor3f(1, 0.2, 0.2);
     glBegin(GL_QUADS);
+    glNormal3f(0,1,0);
       glVertex3f(293.029,144.5,44.236);
       glVertex3f(370,144.5,44.236);
       glVertex3f(370,144.5, -49.48);
@@ -428,6 +499,7 @@ void secondFloor(){
 
     glColor3f(0.1,0.2, 0.3);
     glBegin(GL_QUADS);
+    glNormal3f(0,1,0);
       glVertex3f( 253.029, 144.5, -150);
       glVertex3f( 253.029, 144.5, -128.721);
       glVertex3f( 370, 144.5, -128.721);
@@ -436,6 +508,7 @@ void secondFloor(){
 
     glColor3f(1,0.2, 0.3);
     glBegin(GL_QUADS);
+    glNormal3f(0,1,0);
       glVertex3f( 332, 144.5, -128.721);
       glVertex3f( 370, 144.5, -128.721);
       glVertex3f( 370, 144.5, -49.48);
@@ -444,6 +517,7 @@ void secondFloor(){
 
     glColor3f(1,0.5, 0.5);
     glBegin(GL_QUADS);
+    glNormal3f(0,1,0);
       glVertex3f( 253.029, 144.5, -88.721);
       glVertex3f( 332, 144.5, -88.721);
       glVertex3f( 332.029, 144.5, -49.48);
@@ -452,6 +526,7 @@ void secondFloor(){
 
     glColor3f(1, 0, 0);
     glBegin(GL_QUADS);
+    glNormal3f(0,1,0);
       glVertex3f( 253.029, 144.5, -128.721);
       glVertex3f( 253.029, 144.5, -88.721);
       glVertex3f( 292, 144.5, -88.721);
@@ -459,9 +534,11 @@ void secondFloor(){
       
     glEnd();
     //
+    
 
     glColor3f(0.1,0.2, 1);
     glBegin(GL_QUADS);
+    glNormal3f(0,0,1);
       glVertex3f( -370, 143.5, 150);
       glVertex3f( 370, 143.5, 150);
       glVertex3f( 370, 144.5, 150);
@@ -470,6 +547,7 @@ void secondFloor(){
 
     glColor3f(0.1,0.2, 1);
     glBegin(GL_QUADS);
+    glNormal3f(0,0,-1);
       glVertex3f( -370, 143.5, -150);
       glVertex3f( 370, 143.5, -150);
       glVertex3f( 370, 144.5, -150);
@@ -478,6 +556,7 @@ void secondFloor(){
 
     glColor3f(0.1,0.2, 1);
     glBegin(GL_QUADS);
+    glNormal3f(-1,0,0);
       glVertex3f( -370, 143.5, -150);
       glVertex3f( -370, 143.5, 150);
       glVertex3f( -370, 144.5, 150);
@@ -486,6 +565,7 @@ void secondFloor(){
 
     glColor3f(0.1,0.2, 1);
     glBegin(GL_QUADS);
+    glNormal3f(1,0,0);
       glVertex3f( 370, 143.5, -150);
       glVertex3f( 370, 143.5, 150);
       glVertex3f( 370, 144.5, 150);
@@ -493,7 +573,7 @@ void secondFloor(){
     glEnd();
 
     //
-
+     /* 
       glBegin(GL_QUADS);
     glVertex3f(292, 143.5, -128.721);
     glVertex3f(292, 143.5, -88.721);
@@ -521,8 +601,11 @@ void secondFloor(){
     glVertex3f(292, 144.5, -88.721);
     glVertex3f(332, 144.5, -88.721);
   glEnd();
+  */
 
+  //
   glBegin(GL_QUADS);
+  glNormal3f(0,0,-1);
     glVertex3f(293.029, 143.5, 44.236);
     glVertex3f(253.029, 143.5, 44.236);
     glVertex3f(253.029, 144.5, 44.236);
@@ -530,6 +613,7 @@ void secondFloor(){
   glEnd();
 
   glBegin(GL_QUADS);
+  glNormal3f(0,0,1);
     glVertex3f(293.029, 143.5, -49.48);
     glVertex3f(253.029, 143.5, -49.48);
     glVertex3f(253.029, 144.5, -49.48);
@@ -538,6 +622,7 @@ void secondFloor(){
 
 
   glBegin(GL_QUADS);
+  glNormal3f(1,0,0);
     glVertex3f(253.029, 143.5, 44.236);
     glVertex3f(253.029, 143.5, -49.48);
     glVertex3f(253.029, 144.5, -49.48);
@@ -545,13 +630,14 @@ void secondFloor(){
   glEnd();
 
   glBegin(GL_QUADS);
+  glNormal3f(-1,0,0);
     glVertex3f(293.029, 143.5, 44.236);
     glVertex3f(293.029, 143.5, -49.48);
     glVertex3f(293.029, 144.5, -49.48);
     glVertex3f(293.029, 144.5, 44.236);
   glEnd();
 
-  
+  //
   glPopMatrix();
 }
 
@@ -2289,6 +2375,217 @@ void pictures(){
   }
 }
 
+void ladder(){
+  glPushMatrix();
+    glColor3f(0.1,0.1,0.1);
+    
+      glBegin(GL_QUADS);
+        glVertex3f(292, 79, -53.48);
+        glVertex3f(332, 79, -53.48);
+        glVertex3f(332, 79, -48.986);
+        glVertex3f(292, 79, -48.986);
+      glEnd();
+
+      
+
+      int i; 
+      for(i = 0; i < 29; i++){
+        glPushMatrix();
+          glColor3f(1,1,0);
+          glTranslatef(292 + 20, 82.95 - i*1.580, -53.48 + i*2.247);
+          glScalef(40, 1.580, 4.494);
+          myCube();
+        glPopMatrix();
+    }
+
+        glPushMatrix();
+          glColor3f(0,1,1);
+          glTranslatef(292 + 20, 82.95 - 28*1.580 , -53.48 + 29*2.247 + 20);
+          glScalef(40, 1.580, 40);
+          myCube();
+        glPopMatrix();
+
+
+
+   glPushMatrix();
+   glRotatef(-90, 0, 1, 0);
+   glTranslatef(28*1.1235,0,-292 + 2.247);
+    for(i = 0; i < 24; i++){
+        glPushMatrix();
+          glColor3f(0,0,1);
+          glTranslatef(0, 82.95 -( 29 + i)*1.580, 0 + i*2.247);
+          glScalef(40, 1.580, 4.494);
+          myCube();
+        glPopMatrix();
+    }
+    glPopMatrix();
+
+
+
+
+    glPushMatrix();
+    glRotatef(180, 0,1,0);
+    glTranslatef(-273,0,-41.9);
+    for(i = 0; i < 20; i++){
+        glPushMatrix();
+          glColor3f(0,0,1);
+          glTranslatef(0, 143.5 - i*1.580, 0 + i*2.247);
+          glScalef(40, 1.580, 4.494);
+          myCube();
+        glPopMatrix();
+    }
+    glPopMatrix();
+
+    glColor3f(0,1,1);
+    glPushMatrix();
+    glRotatef(180, 0,1,0);
+    glTranslatef(-273,0,-41.9);
+    glColor3f(1,1,0);
+          glTranslatef(-20, 143.5 - 20*1.580, 20 + 20*2.247);
+          glScalef(80, 1.580, 40);
+          myCube();
+    glPopMatrix();
+
+    
+
+    glColor3f(0,1,0);
+    glPushMatrix();
+    glTranslatef(312, 0, 7*(2.47));
+
+    for(i = 20; i < 38; i++){
+        glPushMatrix();
+          glTranslatef(0, 143.5 - 0.73 - i*1.580, 0 + (-28 + i)*2.247);
+          glScalef(40, 1.580, 4.494);
+          myCube();
+        glPopMatrix();
+    }
+      
+    glPopMatrix();
+
+    
+
+
+
+  glPopMatrix();
+
+}
+
+void object2(){
+glPushMatrix();
+  glTranslatef(-340, 83.740, 110);
+  glRotatef(90,0,1,0);
+  glPushMatrix();
+    glColor3f(1,0.5,0.5);
+
+    glTranslatef(0,5,0);
+    glScalef(20,10,20);
+    myCube();
+  glPopMatrix();
+
+  glColor3f(1,1,0);
+  glPushMatrix();
+    glTranslatef(0,12,0);
+    glutSolidTeapot(2.0f);
+  glPopMatrix();
+
+  glPushMatrix();
+  glEnable(GL_BLEND);
+      glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+      
+      glColor4f(1,1,1,0.5);
+      glTranslatef(0,20,0);
+      glScalef(20,20,20);
+      myCube();
+      glDisable(GL_BLEND);
+    glPopMatrix();
+glPopMatrix();
+
+}
+
+void object3(){
+  glPushMatrix();
+    glRotatef(90, 0,1,0);
+    glTranslatef(-88,99,369);
+    
+    glScalef(16, 9, 1);
+    
+    
+    myCube();
+  glPopMatrix();
+}
+
+void object4(){
+  glPushMatrix();
+    glRotatef(90, 0,1,0);
+    glTranslatef(-88,129,369);
+    
+    glScalef(20, 8, 8);
+    
+    
+    myCube();
+  glPopMatrix();
+}
+
+void object5(){
+  glRotatef(-90, 0,1,0);
+  glTranslatef(120,83,-345);
+  glPushMatrix();
+  glPushMatrix();
+    glPushMatrix();
+    glTranslatef(-10,8.75,0);
+      glScalef(1,17.5,1);
+      
+      myCube();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(10,8.75,0);
+      glScalef(1,17.5,1);
+      
+      myCube();
+    glPopMatrix();
+
+    glColor3f(1,0,0);
+    glPushMatrix();
+      glScalef(35,5,1);
+      glTranslatef(0,3,1);
+      myCube();
+    glPopMatrix();
+
+    glColor3f(1,0,0);
+    glPushMatrix();
+      glTranslatef(0,8,5.5);
+      glScalef(35,1,10);
+      
+      myCube();
+    glPopMatrix();
+
+
+    glColor3f(1,1,0);
+
+    glPushMatrix();
+      glTranslatef(10,4,9.5);
+      glScalef(1,8,1);
+      
+      myCube();
+    glPopMatrix();
+
+    glPushMatrix();
+      glTranslatef(-10,4,9.5);
+      glScalef(1,8,1);
+      
+      myCube();
+    glPopMatrix();
+
+    glPopMatrix();
+
+
+
+
+  glPopMatrix();
+
+}
+
 void Timer(int value)
 {
     if(x1 != 14 && flag == 1)
@@ -2298,8 +2595,12 @@ void Timer(int value)
       x1--;
     if(y2 != 84 && flag == 3)
       y2++;
+    if(y2 != 143 && flag == 5)
+      y2++;
+
     if(y2 != 1 && flag == 4)
       y2--;
+
     glutPostRedisplay();
     glutTimerFunc(433,Timer, 1);
 }
@@ -2310,12 +2611,20 @@ void renderScene2() { //desenha os objetos
   // Draw ground
   glPushMatrix();
   glColor3f(1.0f, 1.0f, 1.0f);
+  glBindTexture(GL_TEXTURE_2D, texture_id[0]);
   glBegin(GL_QUADS);
+    glNormal3f(0,1,0);
+    glTexCoord2f(0.0f, 0.0f);
     glVertex3f(-1000.0f, 0.0f, -1000.0f);
+    glTexCoord2f(0.0f, 1.0f);
     glVertex3f(-1000.0f, 0.0f,  1000.0f);
+    glTexCoord2f(1.0f, 1.0f);
     glVertex3f( 1000.0f, 0.0f,  1000.0f);
+    glTexCoord2f(1.0f, 0.0f);
     glVertex3f( 1000.0f, 0.0f, -1000.0f);
   glEnd();
+glBindTexture(GL_TEXTURE_2D, 0);
+
   glPopMatrix();
   
   //z = azul
@@ -2354,6 +2663,14 @@ void renderScene2() { //desenha os objetos
   support();
 
   pictures();
+
+  ladder();
+
+  object2();
+  object3();
+  object4();
+  object5();
+
   
   
   
@@ -2413,7 +2730,11 @@ void processNormalKeys(unsigned char key, int xx, int yy) {
     flag = 2;
         break;
     case 'a':
-    flag = 3;
+
+    if(flag == 3){
+      flag == 5;
+    }else{
+    flag = 3;}
         break;
     case 'd':
     flag = 4;
@@ -2494,9 +2815,12 @@ void init() {
 
   glClearColor(0.0, 0.0, 0.0, 0.0);
   glEnable(GL_DEPTH_TEST);
+  glEnable(GL_TEXTURE_2D);
   glEnable(GL_MULTISAMPLE);
   glEnable ( GL_TEXTURE_2D );
   glPixelStorei ( GL_UNPACK_ALIGNMENT, 1 );
+
+
   
   // register callbacks
   glutIgnoreKeyRepeat(1);
@@ -2506,6 +2830,8 @@ void init() {
   glutMouseFunc(mouseButton);
   glutMotionFunc(mouseMove);
   glutTimerFunc(133, Timer, 1);
+  initTextures();
+
 
 }
 
