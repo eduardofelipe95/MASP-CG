@@ -61,7 +61,13 @@ image.loadFromFile(filename);
 }
 
 void initTextures(){
-  loadTextureFromFile("piso.jpg", 0);
+  loadTextureFromFile("Piso.jpg", 0);
+  loadTextureFromFile("concreto.jpg", 1);
+  loadTextureFromFile("1.jpg", 2);
+  loadTextureFromFile("madeiraEscura.jpg", 3);
+  loadTextureFromFile("madeira.jpg", 4);
+  loadTextureFromFile("tv.png", 5);
+  loadTextureFromFile("ac.png", 6);
   
   
 }
@@ -106,35 +112,6 @@ void computePos(float deltaMove) {
   z += deltaMove * lz * 0.1f;
   y += deltaMove * ly * 0.1f;
 }
-
-/*void draw1(){
-  
-  glPushMatrix();
-  glColor3f(1.0,0.0,0.0);
-  glTranslatef(0.0f, 37.5f, 0.0f);
-  glScalef(6.0, 75.0, 3.0);
-  glutSolidCube(1.0);
-  glPopMatrix();
-
-  glPushMatrix();
-  glColor3f(1.0,0.0,0.0);
-  glTranslatef(100.0f, 72.0f, 0.0f);
-  glScalef(200.0, 6.0, 3.0);
-  glutSolidCube(1.0);
-  glPopMatrix();
-
-  glPushMatrix();
-  glColor3f(1.0,0.0,0.0);
-  glTranslatef(200.0f, 37.5f, 0.0f);
-  glScalef(6.0, 75.0, 3.0);
-  glutSolidCube(1.0);
-  glPopMatrix();
-
-}*/
-
-
-
-
 
 void myCube(){
   glPushMatrix();
@@ -197,175 +174,323 @@ void myCube(){
 void firstFloor(){
   glPushMatrix();
   
-    glColor4f(1, 0, 0 , 0.3);
+    glColor4f(1, 1, 1 , 0);
+    glBindTexture(GL_TEXTURE_2D, texture_id[1]);
     glBegin(GL_QUADS);
+    
+    
       glNormal3f(0,-1,0);
+      glTexCoord2f(0.0f, 0.0f);
       glVertex3f( -370, 79, -150);
+
+      glTexCoord2f(0.0f, 1.0f);
       glVertex3f( -370, 79, 150);
+
+      glTexCoord2f(0.894594595, 1.0f);
       glVertex3f( 292, 79, 150);
+
+      glTexCoord2f(0.894594595, 0.0f);
       glVertex3f( 292, 79, -150);
     glEnd();
 
-  glColor3f(1,1,0);
+    glBindTexture(GL_TEXTURE_2D, 0);
+
+  glColor3f(1,1,1);
+  glBindTexture(GL_TEXTURE_2D, texture_id[1]);
   glBegin(GL_QUADS);
     glNormal3f(0,-1,0);
-    glVertex3f( 292, 79, 150);
-    glVertex3f( 370, 79, 150);
-    glVertex3f( 370, 79, 40.236);
+
+    glTexCoord2f(0.894594595, 0.633333333);
     glVertex3f( 292, 79, 40.236);
+
+     glTexCoord2f(0.894594595, 1.0f);
+    glVertex3f( 292, 79, 150);
+
+     glTexCoord2f(1.0f, 1.0f);
+    glVertex3f( 370, 79, 150);
+
+     glTexCoord2f(1.0f, 0.633333333);
+    glVertex3f( 370, 79, 40.236);
+
+     
   glEnd();
 
-  glColor3f(1,0,1);
+  
+
+  glBindTexture(GL_TEXTURE_2D, texture_id[1]);
   glBegin(GL_QUADS);
     glNormal3f(0,-1,0);
+
+    glTexCoord2f(1,0.633333333);
     glVertex3f( 370, 79, 40.236);
+
+    glTexCoord2f(0.948648649,0.633333333);
     glVertex3f( 332, 79, 40.236);
+
+    glTexCoord2f(0.948648649,0);
     glVertex3f( 332, 79, -150);
+
+
+    glTexCoord2f(1,0);
     glVertex3f( 370, 79, -150);
 
   glEnd();
 
-  glColor3f(0,0,1);
+  glBindTexture(GL_TEXTURE_2D, texture_id[1]);
   glBegin(GL_QUADS);
       glNormal3f(0,-1,0);
+    glTexCoord2f(0.948648649,0);
     glVertex3f( 332, 79, -150);
+
+    glTexCoord2f(0.948648649,0.07093);
     glVertex3f( 332, 79, -128.721);
+
+    glTexCoord2f(0.894594595,0.07093);
     glVertex3f( 292, 79, -128.721);
+
+    glTexCoord2f(0.894594595,0);
     glVertex3f( 292, 79, -150);
   glEnd();
 
-  glColor3f(1,0.4,1);
+  glBindTexture(GL_TEXTURE_2D, texture_id[1]);
   glBegin(GL_QUADS);
     glNormal3f(0,-1,0);
+
+    glTexCoord2f(0.948648649,0.204263333);
     glVertex3f( 332, 79, -88.721);
+    glTexCoord2f(0.894594595,0.204263333);
     glVertex3f( 292, 79, -88.721);
+    glTexCoord2f(0.894594595,0.321733333);
     glVertex3f( 292, 79, -53.48);
+    glTexCoord2f(0.948648649,0.321733333);
     glVertex3f( 332, 79, -53.48);
   glEnd();
+
+  glBindTexture(GL_TEXTURE_2D, 0);
   
   //
   
-
-  glColor3f(1, 0, 0);
+    glColor4f(1, 1, 1 , 0);
+    glBindTexture(GL_TEXTURE_2D, texture_id[1]);
     glBegin(GL_QUADS);
-      glNormal3f(0,1,0);
+    
+    
+      glNormal3f(0,-1,0);
+      glTexCoord2f(0.0f, 0.0f);
       glVertex3f( -370, 83.740, -150);
+
+      glTexCoord2f(0.0f, 1.0f);
       glVertex3f( -370, 83.740, 150);
+
+      glTexCoord2f(0.894594595, 1.0f);
       glVertex3f( 292, 83.740, 150);
+
+      glTexCoord2f(0.894594595, 0.0f);
       glVertex3f( 292, 83.740, -150);
     glEnd();
 
-  glColor3f(1,1,0);
+    glBindTexture(GL_TEXTURE_2D, 0);
+
+  glColor3f(1,1,1);
+  glBindTexture(GL_TEXTURE_2D, texture_id[1]);
   glBegin(GL_QUADS);
-    glNormal3f(0,1,0);
-    glVertex3f( 292, 83.740, 150);
-    glVertex3f( 370, 83.740, 150);
-    glVertex3f( 370, 83.740, 40.236);
+    glNormal3f(0,-1,0);
+
+    glTexCoord2f(0.894594595, 0.633333333);
     glVertex3f( 292, 83.740, 40.236);
+
+     glTexCoord2f(0.894594595, 1.0f);
+    glVertex3f( 292, 83.740, 150);
+
+     glTexCoord2f(1.0f, 1.0f);
+    glVertex3f( 370, 83.740, 150);
+
+     glTexCoord2f(1.0f, 0.633333333);
+    glVertex3f( 370, 83.740, 40.236);
+
+     
   glEnd();
 
-  glColor3f(1,0,1);
+  
+
+  glBindTexture(GL_TEXTURE_2D, texture_id[1]);
   glBegin(GL_QUADS);
-    glNormal3f(0,1,0);
+    glNormal3f(0,-1,0);
+
+    glTexCoord2f(1,0.633333333);
     glVertex3f( 370, 83.740, 40.236);
+
+    glTexCoord2f(0.948648649,0.633333333);
     glVertex3f( 332, 83.740, 40.236);
+
+    glTexCoord2f(0.948648649,0);
     glVertex3f( 332, 83.740, -150);
+
+
+    glTexCoord2f(1,0);
     glVertex3f( 370, 83.740, -150);
 
   glEnd();
 
-  glColor3f(0,0,1);
+  glBindTexture(GL_TEXTURE_2D, texture_id[1]);
   glBegin(GL_QUADS);
-    glNormal3f(0,1,0);
+      glNormal3f(0,-1,0);
+    glTexCoord2f(0.948648649,0);
     glVertex3f( 332, 83.740, -150);
+
+    glTexCoord2f(0.948648649,0.07093);
     glVertex3f( 332, 83.740, -128.721);
+
+    glTexCoord2f(0.894594595,0.07093);
     glVertex3f( 292, 83.740, -128.721);
+
+    glTexCoord2f(0.894594595,0);
     glVertex3f( 292, 83.740, -150);
   glEnd();
 
-  glColor3f(1,0.4,1);
+  glBindTexture(GL_TEXTURE_2D, texture_id[1]);
   glBegin(GL_QUADS);
-    glNormal3f(0,1,0);
+    glNormal3f(0,-1,0);
+
+    glTexCoord2f(0.948648649,0.204263333);
     glVertex3f( 332, 83.740, -88.721);
+    glTexCoord2f(0.894594595,0.204263333);
     glVertex3f( 292, 83.740, -88.721);
+    glTexCoord2f(0.894594595,0.321733333);
     glVertex3f( 292, 83.740, -53.48);
+    glTexCoord2f(0.948648649,0.321733333);
     glVertex3f( 332, 83.740, -53.48);
   glEnd();
+
+  glBindTexture(GL_TEXTURE_2D, 0);
+
+  
   
 
   //
-
-  glColor3f(0.4,0.4,1);
+  glColor3f(1,1.,1);
+  glBindTexture(GL_TEXTURE_2D, texture_id[1]);
+  
   glBegin(GL_QUADS);
     glNormal3f(0,0,1);
+
+    glTexCoord2f(0,0);
     glVertex3f( -370, 79, 150);
+
+    glTexCoord2f(0,1);
     glVertex3f( 370, 79, 150);
+
+    glTexCoord2f(1,1);
     glVertex3f( 370, 83.740, 150);
+
+    glTexCoord2f(1,0);
     glVertex3f( -370, 83.740, 150);
     
   glEnd();
+  glBindTexture(GL_TEXTURE_2D, 0);
 
+  glBindTexture(GL_TEXTURE_2D, texture_id[1]);
   glBegin(GL_QUADS);
     glNormal3f(0,0,-1);
+
+    glTexCoord2f(0,0);
     glVertex3f( -370, 79, -150);
+
+    glTexCoord2f(0,1);
     glVertex3f( 370, 79, -150);
+
+    glTexCoord2f(1,1);
     glVertex3f( 370, 83.740, -150);
+
+    glTexCoord2f(1,0);
     glVertex3f( -370, 83.740, -150);
     
   glEnd();
 
   
-
+  glBindTexture(GL_TEXTURE_2D, texture_id[1]);
   glBegin(GL_QUADS);
   glNormal3f(-1,0,0);
+
+    glTexCoord2f(0,0);
     glVertex3f( -370, 79, 150);
+    glTexCoord2f(0,1);
     glVertex3f( -370, 79, -150);
+    glTexCoord2f(1,1);
     glVertex3f( -370, 83.740, -150);
+    glTexCoord2f(1,0);
     glVertex3f( -370, 83.740, 150);
     
   glEnd();
 
+  glBindTexture(GL_TEXTURE_2D, texture_id[1]);
   glBegin(GL_QUADS);
   glNormal3f(1,0,0);
+    glTexCoord2f(0,0);
     glVertex3f( 370, 79, 150);
+    glTexCoord2f(0,1);
     glVertex3f( 370, 79, -150);
+    glTexCoord2f(1,1);
     glVertex3f( 370, 83.740, -150);
+    glTexCoord2f(1,0);
     glVertex3f( 370, 83.740, 150);
     
   glEnd();
+  glBindTexture(GL_TEXTURE_2D,0);
 
+  //
+
+  glBindTexture(GL_TEXTURE_2D, texture_id[1]);
   glBegin(GL_QUADS);
   glNormal3f(0,0,-1);
+    glTexCoord2f(0,0);
     glVertex3f(332, 79,40.236);
+    glTexCoord2f(0,1);
     glVertex3f(292, 79,40.236);
+    glTexCoord2f(1,1);
     glVertex3f(292, 83.740,40.236);
+    glTexCoord2f(1,0);
     glVertex3f(332, 83.740,40.236);
 
   glEnd();
 
   glBegin(GL_QUADS);
   glNormal3f(0,0,1);
+  glTexCoord2f(0,0);
     glVertex3f(332, 79, -53.48);
+    glTexCoord2f(0,1);
     glVertex3f(292, 79, -53.48);
+    glTexCoord2f(1,1);
     glVertex3f(292, 83.740, -53.48);
+    glTexCoord2f(1,0);
     glVertex3f(332, 83.740, -53.48);
   glEnd();
 
   glBegin(GL_QUADS);
   glNormal3f(1,0,0);
+  glTexCoord2f(0,0);
     glVertex3f(292, 79, -53.48);
+    glTexCoord2f(0,1);
     glVertex3f(292, 79, 40.236);
+    glTexCoord2f(1,1);
     glVertex3f(292, 83.740, 40.236);
+    glTexCoord2f(1,0);
     glVertex3f(292, 83.740, -53.48);
   glEnd();
 
   glBegin(GL_QUADS);
   glNormal3f(-1,0,0);
+  glTexCoord2f(0,0);
     glVertex3f(332, 79, -53.48);
+    glTexCoord2f(0,1);
     glVertex3f(332, 79, 40.236);
+    glTexCoord2f(1,1);
     glVertex3f(332, 83.740, 40.236);
+    glTexCoord2f(1,0);
     glVertex3f(332, 83.740, -53.48);
   glEnd();
+
+  glBindTexture(GL_TEXTURE_2D, 0);
 
 
   /*
@@ -403,172 +528,257 @@ void firstFloor(){
 
 void secondFloor(){ 
   glPushMatrix();
-  
-    glColor3f(0.1, 0.9, 0.3);
+    glBindTexture(GL_TEXTURE_2D, texture_id[1]);
     glBegin(GL_QUADS);
     glNormal3f(0,-1,0);
+
+      glTexCoord2f(0,0);
       glVertex3f( -370, 143.5, -150);
+
+      glTexCoord2f(0,1);
       glVertex3f( -370, 143.5, 150);
+
+      glTexCoord2f(0.841931081,1);
       glVertex3f( 253.029, 143.5, 150);
+
+      glTexCoord2f(0.841931081,0);
       glVertex3f( 253.029, 143.5, -150);
     glEnd();
 
-    glColor3f(1,0,0);
+    
     glBegin(GL_QUADS);
     glNormal3f(0,-1,0);
+      glTexCoord2f(0.841931081,1);
       glVertex3f(253.029, 143.5, 150);
+      glTexCoord2f(0.841931081,0.647453333);
       glVertex3f(253.029, 143.5, 44.236);
+      glTexCoord2f(1,0.647453333);
       glVertex3f(370, 143.5, 44.236);
+      glTexCoord2f(1,1);
       glVertex3f(370, 143.5, 150);
 
     glEnd();
 
-    glColor3f(1, 0.2, 0.2);
     glBegin(GL_QUADS);
       glNormal3f(0,-1,0);
+
+      glTexCoord2f(0.895985135,0.647453333);
       glVertex3f(293.029,143.5,44.236);
+      glTexCoord2f(1,0.647453333);
       glVertex3f(370,143.5,44.236);
+      glTexCoord2f(1,0.335066667);
       glVertex3f(370,143.5, -49.48);
+      glTexCoord2f(0.895985135,0.335066667);
       glVertex3f(293.029,143.5, -49.48);
     glEnd();
 
-    glColor3f(0.1,0.2, 0.3);
+    
     glBegin(GL_QUADS);
     glNormal3f(0,-1,0);
+      glTexCoord2f(0.841931081,0);
       glVertex3f( 253.029, 143.5, -150);
+
+      glTexCoord2f(0.841931081,0.07093);
       glVertex3f( 253.029, 143.5, -128.721);
+
+      glTexCoord2f(1,0.07093);
       glVertex3f( 370, 143.5, -128.721);
+
+      glTexCoord2f(1,0);
       glVertex3f( 370, 143.5, -150);
     glEnd();
 
-    glColor3f(1,0.2, 0.3);
+    
     glBegin(GL_QUADS);
     glNormal3f(0,-1,0);
+      glTexCoord2f(0.948648649,0.07093);
       glVertex3f( 332, 143.5, -128.721);
+      glTexCoord2f(1,0.07093);
       glVertex3f( 370, 143.5, -128.721);
+      glTexCoord2f(1,0.335066667);
       glVertex3f( 370, 143.5, -49.48);
+      glTexCoord2f(0.948648649,0.335066667);
       glVertex3f( 332, 143.5, -49.48);
     glEnd();
 
-    glColor3f(1,0.5, 0.5);
+   
     glBegin(GL_QUADS);
     glNormal3f(0,-1,0);
+
+      glTexCoord2f(0.841931081,0.204263333);
       glVertex3f( 253.029, 143.5, -88.721);
+      glTexCoord2f(0.948648649,0.204263333);
       glVertex3f( 332, 143.5, -88.721);
+      glTexCoord2f(0.948648649,0.335066667);
       glVertex3f( 332.029, 143.5, -49.48);
+      glTexCoord2f(0.841931081,0.335066667);
       glVertex3f( 253.029, 143.5, -49.48);
     glEnd();
 
-    glColor3f(1, 0, 0);
     glBegin(GL_QUADS);
     glNormal3f(0,-1,0);
+      glTexCoord2f(0.841931081,0.07093);
       glVertex3f( 253.029, 143.5, -128.721);
+      glTexCoord2f(0.841931081,0.204263333);
       glVertex3f( 253.029, 143.5, -88.721);
+      glTexCoord2f(0.894594595,0.204263333);
       glVertex3f( 292, 143.5, -88.721);
+      glTexCoord2f(0.894594595,0.07093);
       glVertex3f( 292, 143.5, -128.721);
       
     glEnd();
     //
-    glColor3f(0.1, 0.9, 0.3);
     glBegin(GL_QUADS);
-    glNormal3f(0,1,0);
+    glNormal3f(0,-1,0);
+
+      glTexCoord2f(0,0);
       glVertex3f( -370, 144.5, -150);
+
+      glTexCoord2f(0,1);
       glVertex3f( -370, 144.5, 150);
+
+      glTexCoord2f(0.841931081,1);
       glVertex3f( 253.029, 144.5, 150);
+
+      glTexCoord2f(0.841931081,0);
       glVertex3f( 253.029, 144.5, -150);
     glEnd();
 
-    glColor3f(1,0,0);
+    
     glBegin(GL_QUADS);
-    glNormal3f(0,1,0);
+    glNormal3f(0,-1,0);
+      glTexCoord2f(0.841931081,1);
       glVertex3f(253.029, 144.5, 150);
+      glTexCoord2f(0.841931081,0.647453333);
       glVertex3f(253.029, 144.5, 44.236);
+      glTexCoord2f(1,0.647453333);
       glVertex3f(370, 144.5, 44.236);
+      glTexCoord2f(1,1);
       glVertex3f(370, 144.5, 150);
 
     glEnd();
 
-    glColor3f(1, 0.2, 0.2);
     glBegin(GL_QUADS);
-    glNormal3f(0,1,0);
+      glNormal3f(0,-1,0);
+
+      glTexCoord2f(0.895985135,0.647453333);
       glVertex3f(293.029,144.5,44.236);
+      glTexCoord2f(1,0.647453333);
       glVertex3f(370,144.5,44.236);
+      glTexCoord2f(1,0.335066667);
       glVertex3f(370,144.5, -49.48);
+      glTexCoord2f(0.895985135,0.335066667);
       glVertex3f(293.029,144.5, -49.48);
     glEnd();
 
-    glColor3f(0.1,0.2, 0.3);
+    
     glBegin(GL_QUADS);
-    glNormal3f(0,1,0);
+    glNormal3f(0,-1,0);
+      glTexCoord2f(0.841931081,0);
       glVertex3f( 253.029, 144.5, -150);
+
+      glTexCoord2f(0.841931081,0.07093);
       glVertex3f( 253.029, 144.5, -128.721);
+
+      glTexCoord2f(1,0.07093);
       glVertex3f( 370, 144.5, -128.721);
+
+      glTexCoord2f(1,0);
       glVertex3f( 370, 144.5, -150);
     glEnd();
 
-    glColor3f(1,0.2, 0.3);
+    
     glBegin(GL_QUADS);
-    glNormal3f(0,1,0);
+    glNormal3f(0,-1,0);
+      glTexCoord2f(0.948648649,0.07093);
       glVertex3f( 332, 144.5, -128.721);
+      glTexCoord2f(1,0.07093);
       glVertex3f( 370, 144.5, -128.721);
+      glTexCoord2f(1,0.335066667);
       glVertex3f( 370, 144.5, -49.48);
+      glTexCoord2f(0.948648649,0.335066667);
       glVertex3f( 332, 144.5, -49.48);
     glEnd();
 
-    glColor3f(1,0.5, 0.5);
+   
     glBegin(GL_QUADS);
-    glNormal3f(0,1,0);
+    glNormal3f(0,-1,0);
+
+      glTexCoord2f(0.841931081,0.204263333);
       glVertex3f( 253.029, 144.5, -88.721);
+      glTexCoord2f(0.948648649,0.204263333);
       glVertex3f( 332, 144.5, -88.721);
+      glTexCoord2f(0.948648649,0.335066667);
       glVertex3f( 332.029, 144.5, -49.48);
+      glTexCoord2f(0.841931081,0.335066667);
       glVertex3f( 253.029, 144.5, -49.48);
     glEnd();
 
-    glColor3f(1, 0, 0);
     glBegin(GL_QUADS);
-    glNormal3f(0,1,0);
+    glNormal3f(0,-1,0);
+      glTexCoord2f(0.841931081,0.07093);
       glVertex3f( 253.029, 144.5, -128.721);
+      glTexCoord2f(0.841931081,0.204263333);
       glVertex3f( 253.029, 144.5, -88.721);
+      glTexCoord2f(0.894594595,0.204263333);
       glVertex3f( 292, 144.5, -88.721);
+      glTexCoord2f(0.894594595,0.07093);
       glVertex3f( 292, 144.5, -128.721);
       
     glEnd();
+    
     //
     
 
-    glColor3f(0.1,0.2, 1);
+    
     glBegin(GL_QUADS);
     glNormal3f(0,0,1);
+      glTexCoord2f(0,0);
       glVertex3f( -370, 143.5, 150);
+      glTexCoord2f(0,1);
       glVertex3f( 370, 143.5, 150);
+      glTexCoord2f(1,0);
       glVertex3f( 370, 144.5, 150);
+      glTexCoord2f(1,1);
       glVertex3f( -370, 144.5, 150);
     glEnd();
 
-    glColor3f(0.1,0.2, 1);
+    
     glBegin(GL_QUADS);
     glNormal3f(0,0,-1);
+    glTexCoord2f(0,0);
       glVertex3f( -370, 143.5, -150);
+      glTexCoord2f(0,1);
       glVertex3f( 370, 143.5, -150);
+      glTexCoord2f(1,0);
       glVertex3f( 370, 144.5, -150);
+      glTexCoord2f(1,1);
       glVertex3f( -370, 144.5, -150);
     glEnd();
 
-    glColor3f(0.1,0.2, 1);
+    
     glBegin(GL_QUADS);
     glNormal3f(-1,0,0);
+    glTexCoord2f(0,0);
       glVertex3f( -370, 143.5, -150);
+      glTexCoord2f(0,1);
       glVertex3f( -370, 143.5, 150);
+      glTexCoord2f(1,0);
       glVertex3f( -370, 144.5, 150);
+      glTexCoord2f(1,1);
       glVertex3f( -370, 144.5, -150);
     glEnd();
 
-    glColor3f(0.1,0.2, 1);
+    
     glBegin(GL_QUADS);
     glNormal3f(1,0,0);
+      glTexCoord2f(0,0);
       glVertex3f( 370, 143.5, -150);
+      glTexCoord2f(0,1);
       glVertex3f( 370, 143.5, 150);
+      glTexCoord2f(1,0);
       glVertex3f( 370, 144.5, 150);
+      glTexCoord2f(1,1);
       glVertex3f( 370, 144.5, -150);
     glEnd();
 
@@ -606,37 +816,54 @@ void secondFloor(){
   //
   glBegin(GL_QUADS);
   glNormal3f(0,0,-1);
+    glTexCoord2f(0,0);
     glVertex3f(293.029, 143.5, 44.236);
+    glTexCoord2f(0,1);
     glVertex3f(253.029, 143.5, 44.236);
+    glTexCoord2f(1,0);
     glVertex3f(253.029, 144.5, 44.236);
+    glTexCoord2f(1,1);
     glVertex3f(293.029, 144.5, 44.236);
   glEnd();
 
   glBegin(GL_QUADS);
   glNormal3f(0,0,1);
+  glTexCoord2f(0,0);
     glVertex3f(293.029, 143.5, -49.48);
+    glTexCoord2f(0,1);
     glVertex3f(253.029, 143.5, -49.48);
+    glTexCoord2f(1,1);
     glVertex3f(253.029, 144.5, -49.48);
+    glTexCoord2f(1,0);
     glVertex3f(293.029, 144.5, -49.48);
   glEnd();
 
 
   glBegin(GL_QUADS);
   glNormal3f(1,0,0);
+    glTexCoord2f(0,0);
     glVertex3f(253.029, 143.5, 44.236);
+    glTexCoord2f(0,1);
     glVertex3f(253.029, 143.5, -49.48);
+    glTexCoord2f(1,0);
     glVertex3f(253.029, 144.5, -49.48);
+    glTexCoord2f(1,1);
     glVertex3f(253.029, 144.5, 44.236);
   glEnd();
 
   glBegin(GL_QUADS);
   glNormal3f(-1,0,0);
+  glTexCoord2f(0,0);
     glVertex3f(293.029, 143.5, 44.236);
+    glTexCoord2f(0,1);
     glVertex3f(293.029, 143.5, -49.48);
+    glTexCoord2f(1,0);
     glVertex3f(293.029, 144.5, -49.48);
+    glTexCoord2f(1,1);
     glVertex3f(293.029, 144.5, 44.236);
   glEnd();
 
+  glBindTexture(GL_TEXTURE_2D, texture_id[0]);
   //
   glPopMatrix();
 }
@@ -829,50 +1056,75 @@ void elevator(){
 
 void roof(){
   glPushMatrix();
-    glColor3f(0.9,0.9,0.5);
+    glBindTexture(GL_TEXTURE_2D, texture_id[1]);
+    glColor3f(1,1,1);
     glBegin(GL_QUADS);
+    glTexCoord2f(0,0);
     glVertex3f( -370, 203, -150);
+    glTexCoord2f(0,1);
     glVertex3f( -370, 203, 150);
+    glTexCoord2f(1,0);
     glVertex3f( 370, 203, 150);
+    glTexCoord2f(1,1);
     glVertex3f( 370, 203, -150);
     glEnd();
 
     glBegin(GL_QUADS);
+    glTexCoord2f(0,0);
     glVertex3f( -370, 223, -150);
+    glTexCoord2f(0,1);
     glVertex3f( -370, 223, 150);
+    glTexCoord2f(1,0);
     glVertex3f( 370, 223, 150);
+    glTexCoord2f(1,1);
     glVertex3f( 370, 223, -150);
     glEnd();
 
-    glColor3f(1,1,0);
+    
     glBegin(GL_QUADS);
+    glTexCoord2f(0,0);
       glVertex3f( -370, 203, -150);
+      glTexCoord2f(0,1);
       glVertex3f( -370, 203,150);
+      glTexCoord2f(1,0);
       glVertex3f( -370, 223, 150);
+      glTexCoord2f(1,1);
       glVertex3f( -370, 223, -150);
     glEnd();
 
     glBegin(GL_QUADS);
+    glTexCoord2f(0,0);
       glVertex3f( 370, 203, -150);
+      glTexCoord2f(0,1);
       glVertex3f( 370, 203,150);
+      glTexCoord2f(1,0);
       glVertex3f( 370, 223, 150);
+      glTexCoord2f(1,1);
       glVertex3f( 370, 223, -150);
     glEnd();
 
     glBegin(GL_QUADS);
+    glTexCoord2f(0,0);
       glVertex3f( -370, 203, -150);
+      glTexCoord2f(0,1);
       glVertex3f( 370, 203, -150);
+      glTexCoord2f(1,0);
       glVertex3f( 370, 223, -150);
+      glTexCoord2f(1,1);
       glVertex3f( -370, 223, -150);
     glEnd();
 
     glBegin(GL_QUADS);
+    glTexCoord2f(0,0);
       glVertex3f( -370, 203, 150);
+      glTexCoord2f(0,1);
       glVertex3f( 370, 203, 150);
+      glTexCoord2f(1,0);
       glVertex3f( 370, 223, 150);
+      glTexCoord2f(1,1);
       glVertex3f( -370, 223, 150);
     glEnd();
-
+    glBindTexture(GL_TEXTURE_2D, 0);
   glPopMatrix();
 
 }
@@ -881,28 +1133,54 @@ void windows(){
   glPushMatrix();
 
     float f = -370;
+    glColor3f(1,1,1);
     for(int i = 0; i < 60; i++){
-      glColor3f( 0.1, 0.4, 1);
+      glBindTexture(GL_TEXTURE_2D, texture_id[3]);
       glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
         glVertex3f(f, 83.740, 150);
+        glTexCoord2f(0,1);
         glVertex3f(f+1, 83.740,150);
+        glTexCoord2f(1,0);
         glVertex3f(f+1,143.5,150);
+        glTexCoord2f(1,1);
         glVertex3f(f,143.5,150);
       glEnd();
 
       glBegin(GL_QUADS);
+      glTexCoord2f(0,0);
         glVertex3f(f, 83.740, 150);
+        glTexCoord2f(0,1);
         glVertex3f(f, 83.740,149);
+        glTexCoord2f(1,0);
         glVertex3f(f,143.5,149);
+        glTexCoord2f(1,1);
         glVertex3f(f,143.5,150);
       glEnd();
 
       glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
         glVertex3f(f + 1, 83.740, 150);
+        glTexCoord2f(0,1);
         glVertex3f(f + 1, 83.740,149);
+        glTexCoord2f(1,0);
         glVertex3f(f + 1,143.5,149);
+        glTexCoord2f(1,1);
         glVertex3f(f + 1,143.5,150);
       glEnd();
+
+      glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
+        glVertex3f(f, 83.740, 149);
+        glTexCoord2f(0,1);
+        glVertex3f(f+1, 83.740,149);
+        glTexCoord2f(1,0);
+        glVertex3f(f+1,143.5,149);
+        glTexCoord2f(1,1);
+        glVertex3f(f,143.5,149);
+      glEnd();
+
+      glBindTexture(GL_TEXTURE_2D, 0);
 
       glEnable(GL_BLEND);
       glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -915,50 +1193,50 @@ void windows(){
       glEnd();
       glDisable(GL_BLEND);
 
-      glColor3f( 0.1, 0.4, 1);
-      glBegin(GL_QUADS);
-        glVertex3f(f, 83.740, 149);
-        glVertex3f(f+1, 83.740,149);
-        glVertex3f(f+1,143.5,149);
-        glVertex3f(f,143.5,149);
-      glEnd();
+      
 
-      glEnable(GL_BLEND);
-      glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-      glColor4f(0,0,0,0.1);
-      glBegin(GL_QUADS);
-        glVertex3f(f + 1, 83.740, 149);
-        glVertex3f(f + 12.317, 83.740,149);
-        glVertex3f(f + 12.317,143.5,149);
-        glVertex3f(f + 1,143.5,149);
-      glEnd();
-      glDisable(GL_BLEND);
+      
       f+= 12.317;
     }
-
-    glColor3f( 0.1, 0.4, 1);
+    //
+    glBindTexture(GL_TEXTURE_2D, texture_id[3]);
+   
       glBegin(GL_QUADS);
+      glTexCoord2f(0,0);
         glVertex3f(f, 83.740, 150);
+        glTexCoord2f(0,1);
         glVertex3f(f+1, 83.740,150);
+        glTexCoord2f(1,0);
         glVertex3f(f+1,143.5,150);
+        glTexCoord2f(1,1);
         glVertex3f(f,143.5,150);
       glEnd();
 
       glBegin(GL_QUADS);
+      glTexCoord2f(0,0);
         glVertex3f(f, 83.740, 149);
+        glTexCoord2f(0,1);
         glVertex3f(f+1, 83.740,149);
+        glTexCoord2f(1,0);
         glVertex3f(f+1,143.5,149);
+        glTexCoord2f(1,1);
         glVertex3f(f,143.5,149);
       glEnd();
 
       glBegin(GL_QUADS);
+      glTexCoord2f(0,0);
         glVertex3f(f + 1, 83.740, 150);
+        glTexCoord2f(0,1);
         glVertex3f(f + 1, 83.740,149);
+        glTexCoord2f(1,0);
         glVertex3f(f + 1,143.5,149);
+        glTexCoord2f(1,1);
         glVertex3f(f + 1,143.5,150);
-      glEnd();
-
+        glEnd();
+        glBindTexture(GL_TEXTURE_2D,0);
   glPopMatrix();
+  //
+
 
 
 
@@ -973,18 +1251,24 @@ void windows(){
 
 
   float z = 137.7;
-  glColor3f( 0.1, 0.4, 1);
+  glColor3f( 1, 1, 1);
+  glBindTexture(GL_TEXTURE_2D, texture_id[3]);
   for(int i = 0; i < 4; i++){
     glBegin(GL_QUADS);
+      glTexCoord2f(0,0);
         glVertex3f(-370, 83.740, z);
+        glTexCoord2f(0,1);
         glVertex3f(-370, 83.740,z - 1);
+        glTexCoord2f(1,0);
         glVertex3f(-370,143.5, z - 1);
+        glTexCoord2f(1,1);
         glVertex3f(-370,143.5,z);
       glEnd();
 
       z -= 12.3;
   }
-
+  glBindTexture(GL_TEXTURE_2D, 0);
+  
   z = 150;
   glEnable(GL_BLEND);
       glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -1001,18 +1285,25 @@ void windows(){
   }
   glDisable(GL_BLEND);
 
-  glColor3f( 0.1, 0.4, 1);
+  
   z = -137.7;
+  glBindTexture(GL_TEXTURE_2D, texture_id[3]);
   for(int i = 0; i < 4; i++){
     glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
         glVertex3f(-370, 83.740, z);
+        glTexCoord2f(0,1);
         glVertex3f(-370, 83.740,z + 1);
+        glTexCoord2f(1,0);
         glVertex3f(-370,143.5, z + 1);
+        glTexCoord2f(1,1);
         glVertex3f(-370,143.5,z);
       glEnd();
 
       z += 12.3;
   }
+
+  glBindTexture(GL_TEXTURE_2D, 0);
 
   z = -150;
   glEnable(GL_BLEND);
@@ -1029,19 +1320,25 @@ void windows(){
       z += 12.3;
   }
   glDisable(GL_BLEND);
-
+  glBindTexture(GL_TEXTURE_2D, texture_id[3]);
   glColor3f( 0.1, 0.4, 1);
   z = 75;
   for(int i = 0; i < 13; i++){
     glBegin(GL_QUADS);
+      glTexCoord2f(0,0);
         glVertex3f(-370, 83.740, z);
+        glTexCoord2f(0,1);
         glVertex3f(-370, 83.740,z - 1);
+        glTexCoord2f(1,0);
         glVertex3f(-370,143.5, z - 1);
+        glTexCoord2f(1,1);
         glVertex3f(-370,143.5,z);
       glEnd();
 
       z -= 12.42;
   }
+
+  glBindTexture(GL_TEXTURE_2D, 0);
 
   z = 75;
   glEnable(GL_BLEND);
@@ -1059,19 +1356,25 @@ void windows(){
   }
   glDisable(GL_BLEND);
 
+  glBindTexture(GL_TEXTURE_2D, texture_id[3]);
 
   z = 137.7;
   glColor3f( 0.1, 0.4, 1);
   for(int i = 0; i < 4; i++){
     glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
         glVertex3f(-369, 83.740, z);
+        glTexCoord2f(0,1);
         glVertex3f(-369, 83.740,z - 1);
+        glTexCoord2f(1,0);
         glVertex3f(-369,143.5, z - 1);
+        glTexCoord2f(1,1);
         glVertex3f(-369,143.5,z);
       glEnd();
 
       z -= 12.3;
   }
+  glBindTexture(GL_TEXTURE_2D, 0);
 
   z = 150;
   glEnable(GL_BLEND);
@@ -1089,19 +1392,25 @@ void windows(){
   }
   glDisable(GL_BLEND);
 
+  glBindTexture(GL_TEXTURE_2D, texture_id[3]);
+
   glColor3f( 0.1, 0.4, 1);
   z = -137.7;
   for(int i = 0; i < 4; i++){
     glBegin(GL_QUADS);
+    glTexCoord2f(0,0);
         glVertex3f(-369, 83.740, z);
+        glTexCoord2f(0,1);
         glVertex3f(-369, 83.740,z + 1);
+        glTexCoord2f(1,0);
         glVertex3f(-369,143.5, z + 1);
+        glTexCoord2f(1,1);
         glVertex3f(-369,143.5,z);
       glEnd();
 
       z += 12.3;
   }
-
+  glBindTexture(GL_TEXTURE_2D, 0);
   z = -150;
   glEnable(GL_BLEND);
       glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -1117,19 +1426,25 @@ void windows(){
       z += 12.3;
   }
   glDisable(GL_BLEND);
+  glBindTexture(GL_TEXTURE_2D, texture_id[3]);
 
   glColor3f( 0.1, 0.4, 1);
   z = 75;
   for(int i = 0; i < 13; i++){
     glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
         glVertex3f(-369, 83.740, z);
+        glTexCoord2f(0,1);
         glVertex3f(-369, 83.740,z - 1);
+        glTexCoord2f(1,0);
         glVertex3f(-369,143.5, z - 1);
+        glTexCoord2f(1,1);
         glVertex3f(-369,143.5,z);
       glEnd();
 
       z -= 12.42;
   }
+  glBindTexture(GL_TEXTURE_2D, 0);
 
   z = 75;
   glEnable(GL_BLEND);
@@ -1146,21 +1461,28 @@ void windows(){
       z -= 12.42;
   }
   glDisable(GL_BLEND);
-  //
+
+  
   
   z = 137.7;
-  glColor3f( 0.1, 0.4, 1);
+  glColor3f( 1, 1, 1);
+  glBindTexture(GL_TEXTURE_2D, texture_id[3]);
   for(int i = 0; i < 4; i++){
     glBegin(GL_QUADS);
+      glTexCoord2f(0,0);
         glVertex3f(370, 83.740, z);
+        glTexCoord2f(0,1);
         glVertex3f(370, 83.740,z - 1);
+        glTexCoord2f(1,0);
         glVertex3f(370,143.5, z - 1);
+        glTexCoord2f(1,1);
         glVertex3f(370,143.5,z);
       glEnd();
 
       z -= 12.3;
   }
-
+  glBindTexture(GL_TEXTURE_2D, 0);
+  
   z = 150;
   glEnable(GL_BLEND);
       glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -1177,18 +1499,25 @@ void windows(){
   }
   glDisable(GL_BLEND);
 
-  glColor3f( 0.1, 0.4, 1);
+  
   z = -137.7;
+  glBindTexture(GL_TEXTURE_2D, texture_id[3]);
   for(int i = 0; i < 4; i++){
     glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
         glVertex3f(370, 83.740, z);
+        glTexCoord2f(0,1);
         glVertex3f(370, 83.740,z + 1);
+        glTexCoord2f(1,0);
         glVertex3f(370,143.5, z + 1);
+        glTexCoord2f(1,1);
         glVertex3f(370,143.5,z);
       glEnd();
 
       z += 12.3;
   }
+
+  glBindTexture(GL_TEXTURE_2D, 0);
 
   z = -150;
   glEnable(GL_BLEND);
@@ -1205,19 +1534,25 @@ void windows(){
       z += 12.3;
   }
   glDisable(GL_BLEND);
-
+  glBindTexture(GL_TEXTURE_2D, texture_id[3]);
   glColor3f( 0.1, 0.4, 1);
   z = 75;
   for(int i = 0; i < 13; i++){
     glBegin(GL_QUADS);
+      glTexCoord2f(0,0);
         glVertex3f(370, 83.740, z);
+        glTexCoord2f(0,1);
         glVertex3f(370, 83.740,z - 1);
+        glTexCoord2f(1,0);
         glVertex3f(370,143.5, z - 1);
+        glTexCoord2f(1,1);
         glVertex3f(370,143.5,z);
       glEnd();
 
       z -= 12.42;
   }
+
+  glBindTexture(GL_TEXTURE_2D, 0);
 
   z = 75;
   glEnable(GL_BLEND);
@@ -1235,19 +1570,25 @@ void windows(){
   }
   glDisable(GL_BLEND);
 
-  ///
+  glBindTexture(GL_TEXTURE_2D, texture_id[3]);
+
   z = 137.7;
   glColor3f( 0.1, 0.4, 1);
   for(int i = 0; i < 4; i++){
     glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
         glVertex3f(369, 83.740, z);
+        glTexCoord2f(0,1);
         glVertex3f(369, 83.740,z - 1);
+        glTexCoord2f(1,0);
         glVertex3f(369,143.5, z - 1);
+        glTexCoord2f(1,1);
         glVertex3f(369,143.5,z);
       glEnd();
 
       z -= 12.3;
   }
+  glBindTexture(GL_TEXTURE_2D, 0);
 
   z = 150;
   glEnable(GL_BLEND);
@@ -1265,19 +1606,25 @@ void windows(){
   }
   glDisable(GL_BLEND);
 
+  glBindTexture(GL_TEXTURE_2D, texture_id[3]);
+
   glColor3f( 0.1, 0.4, 1);
   z = -137.7;
   for(int i = 0; i < 4; i++){
     glBegin(GL_QUADS);
+    glTexCoord2f(0,0);
         glVertex3f(369, 83.740, z);
+        glTexCoord2f(0,1);
         glVertex3f(369, 83.740,z + 1);
+        glTexCoord2f(1,0);
         glVertex3f(369,143.5, z + 1);
+        glTexCoord2f(1,1);
         glVertex3f(369,143.5,z);
       glEnd();
 
       z += 12.3;
   }
-
+  glBindTexture(GL_TEXTURE_2D, 0);
   z = -150;
   glEnable(GL_BLEND);
       glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -1293,19 +1640,25 @@ void windows(){
       z += 12.3;
   }
   glDisable(GL_BLEND);
+  glBindTexture(GL_TEXTURE_2D, texture_id[3]);
 
   glColor3f( 0.1, 0.4, 1);
   z = 75;
   for(int i = 0; i < 13; i++){
     glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
         glVertex3f(369, 83.740, z);
+        glTexCoord2f(0,1);
         glVertex3f(369, 83.740,z - 1);
+        glTexCoord2f(1,0);
         glVertex3f(369,143.5, z - 1);
+        glTexCoord2f(1,1);
         glVertex3f(369,143.5,z);
       glEnd();
 
       z -= 12.42;
   }
+  glBindTexture(GL_TEXTURE_2D, 0);
 
   z = 75;
   glEnable(GL_BLEND);
@@ -1323,22 +1676,33 @@ void windows(){
   }
   glDisable(GL_BLEND);
   
+  
+  //
+  
+  
 
 
 
 
   z = 137.7;
-  glColor3f( 0.1, 0.4, 1);
+  glBindTexture(GL_TEXTURE_2D, texture_id[3]);
   for(int i = 0; i < 4; i++){
     glBegin(GL_QUADS);
+      glTexCoord2f(0,0);
         glVertex3f(-370, 144.5, z);
+        glTexCoord2f(0,1);
         glVertex3f(-370, 144.5,z - 1);
+        glTexCoord2f(1,0);
         glVertex3f(-370,203, z - 1);
+        glTexCoord2f(1,1);
         glVertex3f(-370,203,z);
       glEnd();
 
       z -= 12.3;
   }
+
+  glBindTexture(GL_TEXTURE_2D, 0);
+
 
   z = 150;
   glEnable(GL_BLEND);
@@ -1356,18 +1720,23 @@ void windows(){
   }
   glDisable(GL_BLEND);
 
-  glColor3f( 0.1, 0.4, 1);
+  glBindTexture(GL_TEXTURE_2D, texture_id[3]);
   z = -137.7;
   for(int i = 0; i < 4; i++){
     glBegin(GL_QUADS);
+      glTexCoord2f(0,0);
         glVertex3f(-370, 144.5, z);
+        glTexCoord2f(0,1);
         glVertex3f(-370, 144.5,z + 1);
+        glTexCoord2f(1,0);
         glVertex3f(-370, 203, z + 1);
+        glTexCoord2f(1,1);
         glVertex3f(-370, 203,z);
       glEnd();
 
       z += 12.3;
   }
+  glBindTexture(GL_TEXTURE_2D, 0);
 
   z = -150;
   glEnable(GL_BLEND);
@@ -1384,20 +1753,24 @@ void windows(){
       z += 12.3;
   }
   glDisable(GL_BLEND);
-
+  glBindTexture(GL_TEXTURE_2D, texture_id[3]);
   glColor3f( 0.1, 0.4, 1);
   z = 75;
   for(int i = 0; i < 13; i++){
     glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
         glVertex3f(-370, 144.5, z);
+        glTexCoord2f(0,1);
         glVertex3f(-370, 144.5,z - 1);
+        glTexCoord2f(1,0);
         glVertex3f(-370, 203, z - 1);
+        glTexCoord2f(1,1);
         glVertex3f(-370, 203,z);
       glEnd();
 
       z -= 12.42;
   }
-
+  glBindTexture(GL_TEXTURE_2D, 0);
   z = 75;
   glEnable(GL_BLEND);
       glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -1414,20 +1787,24 @@ void windows(){
   }
   glDisable(GL_BLEND);
 
-
+  glBindTexture(GL_TEXTURE_2D, texture_id[3]);
   z = 137.7;
-  glColor3f( 0.1, 0.4, 1);
+  
   for(int i = 0; i < 4; i++){
     glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
         glVertex3f(-369, 144.5, z);
+        glTexCoord2f(0,1);
         glVertex3f(-369, 144.5,z - 1);
+        glTexCoord2f(1,0);
         glVertex3f(-369,203, z - 1);
+        glTexCoord2f(1,1);
         glVertex3f(-369,203,z);
       glEnd();
 
       z -= 12.3;
   }
-
+  glBindTexture(GL_TEXTURE_2D, 0);
   z = 150;
   glEnable(GL_BLEND);
       glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -1443,19 +1820,24 @@ void windows(){
       z -= 12.3;
   }
   glDisable(GL_BLEND);
-
-  glColor3f( 0.1, 0.4, 1);
+  glBindTexture(GL_TEXTURE_2D, texture_id[3]);
+  
   z = -137.7;
   for(int i = 0; i < 4; i++){
     glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
         glVertex3f(-369, 144.5, z);
+        glTexCoord2f(0,1);
         glVertex3f(-369, 144.5,z + 1);
+        glTexCoord2f(1,0);
         glVertex3f(-369,203, z + 1);
+        glTexCoord2f(1,1);
         glVertex3f(-369,203,z);
       glEnd();
 
       z += 12.3;
   }
+  glBindTexture(GL_TEXTURE_2D, 0);
 
   z = -150;
   glEnable(GL_BLEND);
@@ -1473,18 +1855,23 @@ void windows(){
   }
   glDisable(GL_BLEND);
 
-  glColor3f( 0.1, 0.4, 1);
+  glBindTexture(GL_TEXTURE_2D, texture_id[3]);
   z = 75;
   for(int i = 0; i < 13; i++){
     glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
         glVertex3f(-369, 144.5, z);
+        glTexCoord2f(0,1);
         glVertex3f(-369, 144.5,z - 1);
+        glTexCoord2f(1,0);
         glVertex3f(-369,203, z - 1);
+        glTexCoord2f(1,1);
         glVertex3f(-369,203,z);
       glEnd();
 
       z -= 12.42;
   }
+  glBindTexture(GL_TEXTURE_2D, 0);
 
   z = 75;
   glEnable(GL_BLEND);
@@ -1501,20 +1888,27 @@ void windows(){
       z -= 12.42;
   }
   glDisable(GL_BLEND);
-  //
-  
+
+  //////
   z = 137.7;
-  glColor3f( 0.1, 0.4, 1);
+  glBindTexture(GL_TEXTURE_2D, texture_id[3]);
   for(int i = 0; i < 4; i++){
     glBegin(GL_QUADS);
+      glTexCoord2f(0,0);
         glVertex3f(370, 144.5, z);
+        glTexCoord2f(0,1);
         glVertex3f(370, 144.5,z - 1);
-        glVertex3f(370, 203, z - 1);
-        glVertex3f(370, 203,z);
+        glTexCoord2f(1,0);
+        glVertex3f(370,203, z - 1);
+        glTexCoord2f(1,1);
+        glVertex3f(370,203,z);
       glEnd();
 
       z -= 12.3;
   }
+
+  glBindTexture(GL_TEXTURE_2D, 0);
+
 
   z = 150;
   glEnable(GL_BLEND);
@@ -1524,26 +1918,31 @@ void windows(){
     glBegin(GL_QUADS);
         glVertex3f(370, 144.5, z - 1);
         glVertex3f(370, 144.5, z - 12.3);
-        glVertex3f(370, 203, z - 12.3);
-        glVertex3f(370, 203, z - 1);
+        glVertex3f(370,203, z - 12.3);
+        glVertex3f(370,203, z - 1);
       glEnd();
 
       z -= 12.3;
   }
   glDisable(GL_BLEND);
 
-  glColor3f( 0.1, 0.4, 1);
+  glBindTexture(GL_TEXTURE_2D, texture_id[3]);
   z = -137.7;
   for(int i = 0; i < 4; i++){
     glBegin(GL_QUADS);
-        glVertex3f(370, 83.740, z);
-        glVertex3f(370, 83.740,z + 1);
-        glVertex3f(370,143.5, z + 1);
-        glVertex3f(370,143.5,z);
+      glTexCoord2f(0,0);
+        glVertex3f(370, 144.5, z);
+        glTexCoord2f(0,1);
+        glVertex3f(370, 144.5,z + 1);
+        glTexCoord2f(1,0);
+        glVertex3f(370, 203, z + 1);
+        glTexCoord2f(1,1);
+        glVertex3f(370, 203,z);
       glEnd();
 
       z += 12.3;
   }
+  glBindTexture(GL_TEXTURE_2D, 0);
 
   z = -150;
   glEnable(GL_BLEND);
@@ -1560,20 +1959,24 @@ void windows(){
       z += 12.3;
   }
   glDisable(GL_BLEND);
-
+  glBindTexture(GL_TEXTURE_2D, texture_id[3]);
   glColor3f( 0.1, 0.4, 1);
   z = 75;
   for(int i = 0; i < 13; i++){
     glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
         glVertex3f(370, 144.5, z);
+        glTexCoord2f(0,1);
         glVertex3f(370, 144.5,z - 1);
+        glTexCoord2f(1,0);
         glVertex3f(370, 203, z - 1);
+        glTexCoord2f(1,1);
         glVertex3f(370, 203,z);
       glEnd();
 
       z -= 12.42;
   }
-
+  glBindTexture(GL_TEXTURE_2D, 0);
   z = 75;
   glEnable(GL_BLEND);
       glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -1582,28 +1985,32 @@ void windows(){
     glBegin(GL_QUADS);
         glVertex3f(370, 144.5, z - 1);
         glVertex3f(370, 144.5,z - 12.42);
-        glVertex3f(370, 203, z - 12.42);
-        glVertex3f(370, 203,z - 1);
+        glVertex3f(370,203, z - 12.42);
+        glVertex3f(370,203,z - 1);
       glEnd();
 
       z -= 12.42;
   }
   glDisable(GL_BLEND);
 
-  ///
+  glBindTexture(GL_TEXTURE_2D, texture_id[3]);
   z = 137.7;
-  glColor3f( 0.1, 0.4, 1);
+  
   for(int i = 0; i < 4; i++){
     glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
         glVertex3f(369, 144.5, z);
+        glTexCoord2f(0,1);
         glVertex3f(369, 144.5,z - 1);
+        glTexCoord2f(1,0);
         glVertex3f(369,203, z - 1);
+        glTexCoord2f(1,1);
         glVertex3f(369,203,z);
       glEnd();
 
       z -= 12.3;
   }
-
+  glBindTexture(GL_TEXTURE_2D, 0);
   z = 150;
   glEnable(GL_BLEND);
       glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -1619,19 +2026,24 @@ void windows(){
       z -= 12.3;
   }
   glDisable(GL_BLEND);
-
-  glColor3f( 0.1, 0.4, 1);
+  glBindTexture(GL_TEXTURE_2D, texture_id[3]);
+  
   z = -137.7;
   for(int i = 0; i < 4; i++){
     glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
         glVertex3f(369, 144.5, z);
+        glTexCoord2f(0,1);
         glVertex3f(369, 144.5,z + 1);
+        glTexCoord2f(1,0);
         glVertex3f(369,203, z + 1);
+        glTexCoord2f(1,1);
         glVertex3f(369,203,z);
       glEnd();
 
       z += 12.3;
   }
+  glBindTexture(GL_TEXTURE_2D, 0);
 
   z = -150;
   glEnable(GL_BLEND);
@@ -1649,18 +2061,23 @@ void windows(){
   }
   glDisable(GL_BLEND);
 
-  glColor3f( 0.1, 0.4, 1);
+  glBindTexture(GL_TEXTURE_2D, texture_id[3]);
   z = 75;
   for(int i = 0; i < 13; i++){
     glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
         glVertex3f(369, 144.5, z);
+        glTexCoord2f(0,1);
         glVertex3f(369, 144.5,z - 1);
-        glVertex3f(369, 203, z - 1);
-        glVertex3f(369, 203,z);
+        glTexCoord2f(1,0);
+        glVertex3f(369,203, z - 1);
+        glTexCoord2f(1,1);
+        glVertex3f(369,203,z);
       glEnd();
 
       z -= 12.42;
   }
+  glBindTexture(GL_TEXTURE_2D, 0);
 
   z = 75;
   glEnable(GL_BLEND);
@@ -1668,7 +2085,7 @@ void windows(){
       glColor4f(1,1,1,0.7);
   for(int i = 0; i < 12; i++){
     glBegin(GL_QUADS);
-        glVertex3f(369,144.5, z - 1);
+        glVertex3f(369, 144.5, z - 1);
         glVertex3f(369, 144.5,z - 12.42);
         glVertex3f(369,203, z - 12.42);
         glVertex3f(369,203,z - 1);
@@ -1677,6 +2094,9 @@ void windows(){
       z -= 12.42;
   }
   glDisable(GL_BLEND);
+  //////
+  //
+  
   
 
 
@@ -1687,30 +2107,47 @@ void windows(){
   glPushMatrix();
 
     f = -370;
+
     for(int i = 0; i < 60; i++){
-
-      glColor3f( 0.1, 0.4, 1);
+      glBindTexture(GL_TEXTURE_2D, texture_id[3]);
+      
       glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
         glVertex3f(f, 144.5, 150);
+        glTexCoord2f(0,1);
         glVertex3f(f+1, 144.5,150);
+        glTexCoord2f(1,0);
         glVertex3f(f+1,203,150);
+        glTexCoord2f(1,1);
         glVertex3f(f,203,150);
       glEnd();
+      glBindTexture(GL_TEXTURE_2D, 0);
 
+      glBindTexture(GL_TEXTURE_2D, texture_id[3]);
       glBegin(GL_QUADS);
+      glTexCoord2f(0,0);
         glVertex3f(f, 144.5, 150);
+        glTexCoord2f(0,1);
         glVertex3f(f, 144.5,149);
+        glTexCoord2f(1,0);
         glVertex3f(f,203,149);
+        glTexCoord2f(1,1);
         glVertex3f(f,203,150);
       glEnd();
+      glBindTexture(GL_TEXTURE_2D, 0);
 
+      glBindTexture(GL_TEXTURE_2D, texture_id[3]);
       glBegin(GL_QUADS);
+      glTexCoord2f(0,0);
         glVertex3f(f + 1, 203, 150);
+        glTexCoord2f(0,1);
         glVertex3f(f + 1, 203,149);
+        glTexCoord2f(1,0);
         glVertex3f(f + 1,144.5,149);
+        glTexCoord2f(1,1);
         glVertex3f(f + 1,144.5,150);
       glEnd();
-
+      glBindTexture(GL_TEXTURE_2D, 0);
 
       glEnable(GL_BLEND);
       glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -1723,13 +2160,19 @@ void windows(){
       glEnd();
       glDisable(GL_BLEND);
 
-      glColor3f( 0.1, 0.4, 1);
+      glBindTexture(GL_TEXTURE_2D, texture_id[3]);
+      
       glBegin(GL_QUADS);
+      glTexCoord2f(0,0);
         glVertex3f(f, 144.5, 149);
+        glTexCoord2f(0,1);
         glVertex3f(f+1, 144.5,149);
+        glTexCoord2f(1,0);
         glVertex3f(f+1,203,149);
+        glTexCoord2f(1,1);
         glVertex3f(f,203,149);
       glEnd();
+      glBindTexture(GL_TEXTURE_2D, 0);
 
       glEnable(GL_BLEND);
       glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -1744,144 +2187,87 @@ void windows(){
 
       f+= 12.317;
     }
-
-    glColor3f( 0.1, 0.4, 1);
+    
+    glBindTexture(GL_TEXTURE_2D, texture_id[3]);
+    
       glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
         glVertex3f(f, 144.5, 150);
+        glTexCoord2f(0,1);
         glVertex3f(f+1, 144.5,150);
+        glTexCoord2f(1,0);
         glVertex3f(f+1,203,150);
+        glTexCoord2f(1,1);
         glVertex3f(f,203,150);
       glEnd();
 
       glBegin(GL_QUADS);
+      glTexCoord2f(0,0);
         glVertex3f(f, 144.5, 149);
+        glTexCoord2f(0,1);
         glVertex3f(f+1, 144.5,149);
+        glTexCoord2f(1,0);
         glVertex3f(f+1,203,149);
+        glTexCoord2f(1,1);
         glVertex3f(f,203,149);
       glEnd();
 
       glBegin(GL_QUADS);
+      glTexCoord2f(0,0);
         glVertex3f(f + 1, 144.5, 150);
+        glTexCoord2f(0,1);
         glVertex3f(f + 1, 144.5,149);
+        glTexCoord2f(1,0);
         glVertex3f(f + 1,203,149);
+        glTexCoord2f(1,1);
         glVertex3f(f + 1,203,150);
       glEnd();
 
   glPopMatrix();
+  glBindTexture(GL_TEXTURE_2D, 0);
 
-  //
+  f = -370;
 
-  glPushMatrix();
-
-    f = -370;
     for(int i = 0; i < 60; i++){
-      glColor3f( 0.1, 0.4, 1);
+      glBindTexture(GL_TEXTURE_2D, texture_id[3]);
+      
       glBegin(GL_QUADS);
-        glVertex3f(f, 83.740, -150);
-        glVertex3f(f+1, 83.740,-150);
-        glVertex3f(f+1,143.5,-150);
-        glVertex3f(f,143.5,-150);
-      glEnd();
-
-      glBegin(GL_QUADS);
-        glVertex3f(f, 83.740, -150);
-        glVertex3f(f, 83.740,-149);
-        glVertex3f(f,143.5,-149);
-        glVertex3f(f,143.5,-150);
-      glEnd();
-
-      glBegin(GL_QUADS);
-        glVertex3f(f + 1, 83.740, -150);
-        glVertex3f(f + 1, 83.740,-149);
-        glVertex3f(f + 1,143.5,-149);
-        glVertex3f(f + 1,143.5,-150);
-      glEnd();
-
-      glEnable(GL_BLEND);
-      glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-      glColor4f(1,1,1,0.7);
-      glBegin(GL_QUADS);
-        glVertex3f(f + 1, 83.740, -150);
-        glVertex3f(f + 12.317, 83.740,-150);
-        glVertex3f(f + 12.317,143.5,-150);
-        glVertex3f(f + 1,143.5,-150);
-      glEnd();
-      glDisable(GL_BLEND);
-
-      glColor3f( 0.1, 0.4, 1);
-      glBegin(GL_QUADS);
-        glVertex3f(f, 83.740, -149);
-        glVertex3f(f+1, 83.740,-149);
-        glVertex3f(f+1,143.5,-149);
-        glVertex3f(f,143.5,-149);
-      glEnd();
-
-      glEnable(GL_BLEND);
-      glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-      glColor4f(0,0,0,0.1);
-      glBegin(GL_QUADS);
-        glVertex3f(f + 1, 83.740, -149);
-        glVertex3f(f + 12.317, 83.740,-149);
-        glVertex3f(f + 12.317,143.5,-149);
-        glVertex3f(f + 1,143.5,-149);
-      glEnd();
-      glDisable(GL_BLEND);
-      f+= 12.317;
-    }
-
-    glColor3f( 0.1, 0.4, 1);
-      glBegin(GL_QUADS);
-        glVertex3f(f, 83.740, -150);
-        glVertex3f(f+1, 83.740,-150);
-        glVertex3f(f+1,143.5,-150);
-        glVertex3f(f,143.5,-150);
-      glEnd();
-
-      glBegin(GL_QUADS);
-        glVertex3f(f, 83.740, -149);
-        glVertex3f(f+1, 83.740,-149);
-        glVertex3f(f+1,143.5,-149);
-        glVertex3f(f,143.5,-149);
-      glEnd();
-
-      glBegin(GL_QUADS);
-        glVertex3f(f + 1, 83.740, -150);
-        glVertex3f(f + 1, 83.740,-149);
-        glVertex3f(f + 1,143.5,-149);
-        glVertex3f(f + 1,143.5,-150);
-      glEnd();
-
-  glPopMatrix();
-
-  //
-
-  glPushMatrix();
-
-    f = -370;
-    for(int i = 0; i < 60; i++){
-
-      glColor3f( 0.1, 0.4, 1);
-      glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
         glVertex3f(f, 144.5, -150);
+        glTexCoord2f(0,1);
         glVertex3f(f+1, 144.5,-150);
+        glTexCoord2f(1,0);
         glVertex3f(f+1,203,-150);
+        glTexCoord2f(1,1);
         glVertex3f(f,203,-150);
       glEnd();
+      glBindTexture(GL_TEXTURE_2D, 0);
 
+      glBindTexture(GL_TEXTURE_2D, texture_id[3]);
       glBegin(GL_QUADS);
+      glTexCoord2f(0,0);
         glVertex3f(f, 144.5, -150);
+        glTexCoord2f(0,1);
         glVertex3f(f, 144.5,-149);
+        glTexCoord2f(1,0);
         glVertex3f(f,203,-149);
+        glTexCoord2f(1,1);
         glVertex3f(f,203,-150);
       glEnd();
+      glBindTexture(GL_TEXTURE_2D, 0);
 
+      glBindTexture(GL_TEXTURE_2D, texture_id[3]);
       glBegin(GL_QUADS);
+      glTexCoord2f(0,0);
         glVertex3f(f + 1, 203, -150);
+        glTexCoord2f(0,1);
         glVertex3f(f + 1, 203,-149);
+        glTexCoord2f(1,0);
         glVertex3f(f + 1,144.5,-149);
+        glTexCoord2f(1,1);
         glVertex3f(f + 1,144.5,-150);
       glEnd();
-
+      glBindTexture(GL_TEXTURE_2D, 0);
 
       glEnable(GL_BLEND);
       glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -1894,13 +2280,19 @@ void windows(){
       glEnd();
       glDisable(GL_BLEND);
 
-      glColor3f( 0.1, 0.4, 1);
+      glBindTexture(GL_TEXTURE_2D, texture_id[3]);
+      
       glBegin(GL_QUADS);
+      glTexCoord2f(0,0);
         glVertex3f(f, 144.5, -149);
+        glTexCoord2f(0,1);
         glVertex3f(f+1, 144.5,-149);
+        glTexCoord2f(1,0);
         glVertex3f(f+1,203,-149);
+        glTexCoord2f(1,1);
         glVertex3f(f,203,-149);
       glEnd();
+      glBindTexture(GL_TEXTURE_2D, 0);
 
       glEnable(GL_BLEND);
       glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -1915,30 +2307,151 @@ void windows(){
 
       f+= 12.317;
     }
-
-    glColor3f( 0.1, 0.4, 1);
+    
+    glBindTexture(GL_TEXTURE_2D, texture_id[3]);
+    
       glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
         glVertex3f(f, 144.5, -150);
+        glTexCoord2f(0,1);
         glVertex3f(f+1, 144.5,-150);
+        glTexCoord2f(1,0);
         glVertex3f(f+1,203,-150);
+        glTexCoord2f(1,1);
         glVertex3f(f,203,-150);
       glEnd();
 
       glBegin(GL_QUADS);
+      glTexCoord2f(0,0);
         glVertex3f(f, 144.5, -149);
+        glTexCoord2f(0,1);
         glVertex3f(f+1, 144.5,-149);
+        glTexCoord2f(1,0);
         glVertex3f(f+1,203,-149);
+        glTexCoord2f(1,1);
         glVertex3f(f,203,-149);
       glEnd();
 
       glBegin(GL_QUADS);
+      glTexCoord2f(0,0);
         glVertex3f(f + 1, 144.5, -150);
+        glTexCoord2f(0,1);
         glVertex3f(f + 1, 144.5,-149);
+        glTexCoord2f(1,0);
         glVertex3f(f + 1,203,-149);
+        glTexCoord2f(1,1);
         glVertex3f(f + 1,203,-150);
       glEnd();
 
   glPopMatrix();
+  glBindTexture(GL_TEXTURE_2D, 0);
+  
+  //
+    f = -370;
+    glColor3f(1,1,1);
+    for(int i = 0; i < 60; i++){
+      glBindTexture(GL_TEXTURE_2D, texture_id[3]);
+      glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
+        glVertex3f(f, 83.740, -150);
+        glTexCoord2f(0,1);
+        glVertex3f(f+1, 83.740,-150);
+        glTexCoord2f(1,0);
+        glVertex3f(f+1,143.5,-150);
+        glTexCoord2f(1,1);
+        glVertex3f(f,143.5,-150);
+      glEnd();
+
+      glBegin(GL_QUADS);
+      glTexCoord2f(0,0);
+        glVertex3f(f, 83.740, -150);
+        glTexCoord2f(0,1);
+        glVertex3f(f, 83.740,-149);
+        glTexCoord2f(1,0);
+        glVertex3f(f,143.5,-149);
+        glTexCoord2f(1,1);
+        glVertex3f(f,143.5,-150);
+      glEnd();
+
+      glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
+        glVertex3f(f + 1, 83.740, -150);
+        glTexCoord2f(0,1);
+        glVertex3f(f + 1, 83.740,-149);
+        glTexCoord2f(1,0);
+        glVertex3f(f + 1,143.5,-149);
+        glTexCoord2f(1,1);
+        glVertex3f(f + 1,143.5,-150);
+      glEnd();
+
+      glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
+        glVertex3f(f, 83.740, -149);
+        glTexCoord2f(0,1);
+        glVertex3f(f+1, 83.740,-149);
+        glTexCoord2f(1,0);
+        glVertex3f(f+1,143.5,-149);
+        glTexCoord2f(1,1);
+        glVertex3f(f,143.5,-149);
+      glEnd();
+
+      glBindTexture(GL_TEXTURE_2D, 0);
+
+      glEnable(GL_BLEND);
+      glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+      glColor4f(1,1,1,0.7);
+      glBegin(GL_QUADS);
+        glVertex3f(f + 1, 83.740, -150);
+        glVertex3f(f + 12.317, 83.740,-150);
+        glVertex3f(f + 12.317,143.5,-150);
+        glVertex3f(f + 1,143.5,-150);
+      glEnd();
+      glDisable(GL_BLEND);
+
+      
+
+      
+      f+= 12.317;
+    }
+    //
+    glBindTexture(GL_TEXTURE_2D, texture_id[3]);
+   
+      glBegin(GL_QUADS);
+      glTexCoord2f(0,0);
+        glVertex3f(f, 83.740, 150);
+        glTexCoord2f(0,1);
+        glVertex3f(f+1, 83.740,150);
+        glTexCoord2f(1,0);
+        glVertex3f(f+1,143.5,150);
+        glTexCoord2f(1,1);
+        glVertex3f(f,143.5,150);
+      glEnd();
+
+      glBegin(GL_QUADS);
+      glTexCoord2f(0,0);
+        glVertex3f(f, 83.740, 149);
+        glTexCoord2f(0,1);
+        glVertex3f(f+1, 83.740,149);
+        glTexCoord2f(1,0);
+        glVertex3f(f+1,143.5,149);
+        glTexCoord2f(1,1);
+        glVertex3f(f,143.5,149);
+      glEnd();
+
+      glBegin(GL_QUADS);
+      glTexCoord2f(0,0);
+        glVertex3f(f + 1, 83.740, 150);
+        glTexCoord2f(0,1);
+        glVertex3f(f + 1, 83.740,149);
+        glTexCoord2f(1,0);
+        glVertex3f(f + 1,143.5,149);
+        glTexCoord2f(1,1);
+        glVertex3f(f + 1,143.5,150);
+        glEnd();
+        glBindTexture(GL_TEXTURE_2D,0);
+  glPopMatrix();
+    glPopMatrix();
+  
 }
 
 void support(){
@@ -2180,91 +2693,136 @@ void support(){
   glPopMatrix();
 }
 
-void object1(){
+void object1(int i){
   glPushMatrix();
-  glColor3f(1,1,0);
+  glColor3f(1,1,1);
     glBegin(GL_QUADS);
       glVertex3f(-1.5 , 0, -2.5);
       glVertex3f(1.5 , 0, -2.5);
       glVertex3f(1.5 , 0, 2.5);
       glVertex3f(-1.5 , 0, 2.5);
     glEnd();
-
+    //
+    glBindTexture(GL_TEXTURE_2D, texture_id[4]);
     glBegin(GL_QUADS);
+      glTexCoord2f(0,0);
       glVertex3f(-1.5 , 0, -2.5);
+      glTexCoord2f(0.928571429,0);
       glVertex3f(-1.5 , 3, -2.5);
+      glTexCoord2f(0.928571429,1);
       glVertex3f(-1.5 , 3, 2.5);
+      glTexCoord2f(0,1);
       glVertex3f(-1.5 , 0, 2.5);
     glEnd();
 
-    glColor3f(1,1,1);
     glBegin(GL_QUADS);
-      glVertex3f(-1.5 , 3, -2.5);
-      glVertex3f(-1.5 , 3.5, -2.5);
-      glVertex3f(-1.5 , 3.5, -0.25);
-      glVertex3f(-1.5 , 3, -0.25);
+      glTexCoord2f(0,0);
+      glVertex3f(1.5 , 0, -2.5);
+      glTexCoord2f(0.928571429,0);
+      glVertex3f(1.5 , 3, -2.5);
+      glTexCoord2f(0.928571429,1);
+      glVertex3f(1.5 , 3, 2.5);
+      glTexCoord2f(0,1);
+      glVertex3f(1.5 , 0, 2.5);
     glEnd();
 
+    
+    glColor3f(1,1,1);
     glBegin(GL_QUADS);
+      glTexCoord2f(0.928571429,0);
+      glVertex3f(-1.5 , 3, -2.5);
+      glTexCoord2f(1,0);
+      glVertex3f(-1.5 , 3.5, -2.5);
+      glTexCoord2f(1, 0.45);
+      glVertex3f(-1.5 , 3.5, -0.25);
+      glTexCoord2f(0.928571429, 0.45);
+      glVertex3f(-1.5 , 3, -0.25);
+    glEnd();
+    glBegin(GL_QUADS);
+      glTexCoord2f(0.928571429,0);
       glVertex3f(1.5 , 3, -2.5);
+      glTexCoord2f(1,0);
       glVertex3f(1.5 , 3.5, -2.5);
+      glTexCoord2f(1, 0.45);
       glVertex3f(1.5 , 3.5, -0.25);
+      glTexCoord2f(0.928571429, 0.45);
       glVertex3f(1.5 , 3, -0.25);
     glEnd();
 
-    glColor3f(0,1,0);
     glBegin(GL_QUADS);
+      glTexCoord2f(0.928571429,1);
       glVertex3f(1.5 , 3, 2.5);
+      glTexCoord2f(1,1);
       glVertex3f(1.5 , 3.5, 2.5);
+      glTexCoord2f(1,0.55);
       glVertex3f(1.5 , 3.5, 0.25);
+      glTexCoord2f(0.928571429,0.55);
       glVertex3f(1.5 , 3, 0.25);
     glEnd();
 
-    glColor3f(1,0,1);
     glBegin(GL_QUADS);
-      glVertex3f(-1.5 , 3.5, -2.5);
-      glVertex3f(-1.5 , 3.5, -0.25);
-      glVertex3f(1.5 , 3.5, -0.25);
-      glVertex3f(1.5 , 3.5, -2.5);
-    glEnd();
-
-    glBegin(GL_QUADS);
-      glVertex3f(-1.5 , 3.5, 0.25);
-      glVertex3f(-1.5 , 3.5, 2.5);
-      glVertex3f(1.5 , 3.5, 2.5);
-      glVertex3f(1.5 , 3.5, 0.25);
-    glEnd();
-
-    glColor3f(0,0,1);
-
-    glBegin(GL_QUADS);
+      glTexCoord2f(0.928571429,1);
       glVertex3f(-1.5 , 3, 2.5);
+      glTexCoord2f(1,1);
       glVertex3f(-1.5 , 3.5, 2.5);
+      glTexCoord2f(1,0.55);
       glVertex3f(-1.5 , 3.5, 0.25);
+      glTexCoord2f(0.928571429,0.55);
       glVertex3f(-1.5 , 3, 0.25);
     glEnd();
 
+    
     glBegin(GL_QUADS);
-      glVertex3f(1.5 , 0, -2.5);
-      glVertex3f(1.5 , 3, -2.5);
-      glVertex3f(1.5 , 3, 2.5);
-      glVertex3f(1.5 , 0, 2.5);
-    glEnd();
-
-    glBegin(GL_QUADS);
-      glVertex3f(-1.5 , 0, -2.5);
+    glTexCoord2f(0,0);
       glVertex3f(-1.5 , 3.5, -2.5);
+      glTexCoord2f(0,1);
+      glVertex3f(-1.5 , 3.5, -0.25);
+      glTexCoord2f(1,0);
+      glVertex3f(1.5 , 3.5, -0.25);
+      glTexCoord2f(1,1);
       glVertex3f(1.5 , 3.5, -2.5);
+    glEnd();
+
+    glBegin(GL_QUADS);
+      glTexCoord2f(0,0);
+      glVertex3f(-1.5 , 3.5, 0.25);
+      glTexCoord2f(0,1);
+      glVertex3f(-1.5 , 3.5, 2.5);
+      glTexCoord2f(1,0);
+      glVertex3f(1.5 , 3.5, 2.5);
+      glTexCoord2f(1,1);
+      glVertex3f(1.5 , 3.5, 0.25);
+    glEnd();
+
+   
+
+    
+
+    
+
+    glBegin(GL_QUADS);
+      glTexCoord2f(0,0);
+      glVertex3f(-1.5 , 0, -2.5);
+      glTexCoord2f(0,1);
+      glVertex3f(-1.5 , 3.5, -2.5);
+      glTexCoord2f(1,0);
+      glVertex3f(1.5 , 3.5, -2.5);
+      glTexCoord2f(1,1);
       glVertex3f(1.5 , 0, -2.5);
     glEnd();
 
     glBegin(GL_QUADS);
+      glTexCoord2f(0,0);
       glVertex3f(-1.5 , 0, 2.5);
+      glTexCoord2f(0,1);
       glVertex3f(-1.5 , 3.5, 2.5);
+      glTexCoord2f(1,0);
       glVertex3f(1.5 , 3.5, 2.5);
+      glTexCoord2f(1,1);
       glVertex3f(1.5 , 0, 2.5);
     glEnd();
 
+    glBindTexture(GL_TEXTURE_2D, 0);
     glEnable(GL_BLEND);
     glBlendFunc (GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glColor4f(1,1,1,0.3);
@@ -2314,6 +2872,20 @@ void object1(){
 
     glDisable(GL_BLEND);
 
+    glColor3f(1,1,1);
+    glBindTexture(GL_TEXTURE_2D, texture_id[2]);
+    glBegin(GL_QUADS);
+      glTexCoord2f(0,1);
+      glVertex3f(-3.5 , 6, 0.28);
+      glTexCoord2f(0,0);
+      glVertex3f(-3.5 , 18, 0.28);
+      glTexCoord2f(1,0);
+      glVertex3f(3.5 , 18, 0.28);
+      glTexCoord2f(1,1);
+      glVertex3f(3.5 , 6, 0.28);
+    glEnd();
+    glBindTexture(GL_TEXTURE_2D, 0);
+
   glPopMatrix();
 }
 
@@ -2324,7 +2896,7 @@ void pictures(){
     glTranslatef(i, 83.740,-90);
     glRotatef(90, 0, 1,0);
     
-    object1();
+    object1(i);
     glPopMatrix();
   }
 
@@ -2333,7 +2905,7 @@ void pictures(){
     glTranslatef(i, 83.740, 0);
     glRotatef(90, 0, 1,0);
     
-    object1();
+    object1(i);
     glPopMatrix();
   }
 
@@ -2342,7 +2914,7 @@ void pictures(){
     glTranslatef(i, 83.740,90);
     glRotatef(90, 0, 1,0);
     
-    object1();
+    object1(i);
     glPopMatrix();
   }
 
@@ -2352,7 +2924,7 @@ void pictures(){
     glTranslatef(i, 144.5,-90);
     glRotatef(90, 0, 1,0);
     
-    object1();
+    object1(i);
     glPopMatrix();
   }
 
@@ -2361,7 +2933,7 @@ void pictures(){
     glTranslatef(i, 144.5, 0);
     glRotatef(90, 0, 1,0);
     
-    object1();
+    object1(i);
     glPopMatrix();
   }
 
@@ -2370,39 +2942,206 @@ void pictures(){
     glTranslatef(i, 144.5,90);
     glRotatef(90, 0, 1,0);
     
-    object1();
+    object1(i);
     glPopMatrix();
   }
 }
 
 void ladder(){
   glPushMatrix();
-    glColor3f(0.1,0.1,0.1);
     
+      glBindTexture(GL_TEXTURE_2D, texture_id[1]);
+      glColor3f(1,1,1);
       glBegin(GL_QUADS);
+      glTexCoord2f(0,0);
         glVertex3f(292, 79, -53.48);
+        glTexCoord2f(0,1);
         glVertex3f(332, 79, -53.48);
+        glTexCoord2f(1,0);
         glVertex3f(332, 79, -48.986);
+        glTexCoord2f(1,1);
         glVertex3f(292, 79, -48.986);
       glEnd();
+      glBindTexture(GL_TEXTURE_2D,0);
 
       
 
       int i; 
       for(i = 0; i < 29; i++){
         glPushMatrix();
-          glColor3f(1,1,0);
+          
           glTranslatef(292 + 20, 82.95 - i*1.580, -53.48 + i*2.247);
           glScalef(40, 1.580, 4.494);
-          myCube();
+          ///
+          glPushMatrix();
+    glBindTexture(GL_TEXTURE_2D, texture_id[1]);
+    glBegin(GL_POLYGON);
+      glNormal3f(0,0,-1); 
+      glTexCoord2f(0,0);   
+      glVertex3f(  0.5, -0.5, -0.5 ); 
+      glTexCoord2f(0,1);     
+      glVertex3f(  0.5,  0.5, -0.5 );   
+      glTexCoord2f(1,0);   
+      glVertex3f( -0.5,  0.5, -0.5 );    
+      glTexCoord2f(1,1);  
+      glVertex3f( -0.5, -0.5, -0.5 );      
+       
+    glEnd();
+    
+    glBegin(GL_POLYGON);
+    glNormal3f(0,0,1);
+    glTexCoord2f(0,0);
+      glVertex3f(  0.5, -0.5, 0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5,  0.5, 0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, 0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, 0.5 );
+    glEnd();
+     
+    // Lado roxo - DIREITA
+    glBegin(GL_POLYGON);
+    glNormal3f(1,0,0);
+    glTexCoord2f(0,0);
+      glVertex3f( 0.5, -0.5, -0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f( 0.5,  0.5, -0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( 0.5,  0.5,  0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( 0.5, -0.5,  0.5 );
+    glEnd();
+     
+    // Lado verde - ESQUERDA
+    glBegin(GL_POLYGON);
+      glNormal3f(-1,0,0);
+      glTexCoord2f(0,0);
+      glVertex3f( -0.5, -0.5,  0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f( -0.5,  0.5,  0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, -0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+     
+    // Lado azul - TOPO
+    glBegin(GL_POLYGON);
+      glNormal3f(0,1,0);
+      glTexCoord2f(0,0);
+      glVertex3f(  0.5,  0.5,  0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5,  0.5, -0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, -0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5,  0.5,  0.5 );
+    glEnd();
+     
+    // Lado vermelho - BASE
+    glBegin(GL_POLYGON);
+      glNormal3f(0,-1,0);
+      glTexCoord2f(0,0);
+      glVertex3f(  0.5, -0.5, -0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5, -0.5,  0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5, -0.5,  0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+    glBindTexture(GL_TEXTURE_2D, 0);
+  glPopMatrix();
+          ///
+
         glPopMatrix();
     }
 
         glPushMatrix();
-          glColor3f(0,1,1);
+          
           glTranslatef(292 + 20, 82.95 - 28*1.580 , -53.48 + 29*2.247 + 20);
           glScalef(40, 1.580, 40);
-          myCube();
+                glPushMatrix();
+    glBindTexture(GL_TEXTURE_2D, texture_id[1]);
+    glBegin(GL_POLYGON);
+      glNormal3f(0,0,-1); 
+      glTexCoord2f(0,0);   
+      glVertex3f(  0.5, -0.5, -0.5 ); 
+      glTexCoord2f(0,1);     
+      glVertex3f(  0.5,  0.5, -0.5 );   
+      glTexCoord2f(1,0);   
+      glVertex3f( -0.5,  0.5, -0.5 );    
+      glTexCoord2f(1,1);  
+      glVertex3f( -0.5, -0.5, -0.5 );      
+       
+    glEnd();
+    
+    glBegin(GL_POLYGON);
+    glNormal3f(0,0,1);
+    glTexCoord2f(0,0);
+      glVertex3f(  0.5, -0.5, 0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5,  0.5, 0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, 0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, 0.5 );
+    glEnd();
+     
+    // Lado roxo - DIREITA
+    glBegin(GL_POLYGON);
+    glNormal3f(1,0,0);
+    glTexCoord2f(0,0);
+      glVertex3f( 0.5, -0.5, -0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f( 0.5,  0.5, -0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( 0.5,  0.5,  0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( 0.5, -0.5,  0.5 );
+    glEnd();
+     
+    // Lado verde - ESQUERDA
+    glBegin(GL_POLYGON);
+      glNormal3f(-1,0,0);
+      glTexCoord2f(0,0);
+      glVertex3f( -0.5, -0.5,  0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f( -0.5,  0.5,  0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, -0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+     
+    // Lado azul - TOPO
+    glBegin(GL_POLYGON);
+      glNormal3f(0,1,0);
+      glTexCoord2f(0,0);
+      glVertex3f(  0.5,  0.5,  0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5,  0.5, -0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, -0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5,  0.5,  0.5 );
+    glEnd();
+     
+    // Lado vermelho - BASE
+    glBegin(GL_POLYGON);
+      glNormal3f(0,-1,0);
+      glTexCoord2f(0,0);
+      glVertex3f(  0.5, -0.5, -0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5, -0.5,  0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5, -0.5,  0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+    glBindTexture(GL_TEXTURE_2D, 0);
+  glPopMatrix();
         glPopMatrix();
 
 
@@ -2412,10 +3151,91 @@ void ladder(){
    glTranslatef(28*1.1235,0,-292 + 2.247);
     for(i = 0; i < 24; i++){
         glPushMatrix();
-          glColor3f(0,0,1);
+          
           glTranslatef(0, 82.95 -( 29 + i)*1.580, 0 + i*2.247);
           glScalef(40, 1.580, 4.494);
-          myCube();
+          ///
+                glPushMatrix();
+    glBindTexture(GL_TEXTURE_2D, texture_id[1]);
+    glBegin(GL_POLYGON);
+      glNormal3f(0,0,-1); 
+      glTexCoord2f(0,0);   
+      glVertex3f(  0.5, -0.5, -0.5 ); 
+      glTexCoord2f(0,1);     
+      glVertex3f(  0.5,  0.5, -0.5 );   
+      glTexCoord2f(1,0);   
+      glVertex3f( -0.5,  0.5, -0.5 );    
+      glTexCoord2f(1,1);  
+      glVertex3f( -0.5, -0.5, -0.5 );      
+       
+    glEnd();
+    
+    glBegin(GL_POLYGON);
+    glNormal3f(0,0,1);
+    glTexCoord2f(0,0);
+      glVertex3f(  0.5, -0.5, 0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5,  0.5, 0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, 0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, 0.5 );
+    glEnd();
+     
+    // Lado roxo - DIREITA
+    glBegin(GL_POLYGON);
+    glNormal3f(1,0,0);
+    glTexCoord2f(0,0);
+      glVertex3f( 0.5, -0.5, -0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f( 0.5,  0.5, -0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( 0.5,  0.5,  0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( 0.5, -0.5,  0.5 );
+    glEnd();
+     
+    // Lado verde - ESQUERDA
+    glBegin(GL_POLYGON);
+      glNormal3f(-1,0,0);
+      glTexCoord2f(0,0);
+      glVertex3f( -0.5, -0.5,  0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f( -0.5,  0.5,  0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, -0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+     
+    // Lado azul - TOPO
+    glBegin(GL_POLYGON);
+      glNormal3f(0,1,0);
+      glTexCoord2f(0,0);
+      glVertex3f(  0.5,  0.5,  0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5,  0.5, -0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, -0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5,  0.5,  0.5 );
+    glEnd();
+     
+    // Lado vermelho - BASE
+    glBegin(GL_POLYGON);
+      glNormal3f(0,-1,0);
+      glTexCoord2f(0,0);
+      glVertex3f(  0.5, -0.5, -0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5, -0.5,  0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5, -0.5,  0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+    glBindTexture(GL_TEXTURE_2D, 0);
+  glPopMatrix();
+          ///
         glPopMatrix();
     }
     glPopMatrix();
@@ -2428,27 +3248,187 @@ void ladder(){
     glTranslatef(-273,0,-41.9);
     for(i = 0; i < 20; i++){
         glPushMatrix();
-          glColor3f(0,0,1);
+          
           glTranslatef(0, 143.5 - i*1.580, 0 + i*2.247);
           glScalef(40, 1.580, 4.494);
-          myCube();
+          ///
+                    glPushMatrix();
+    glBindTexture(GL_TEXTURE_2D, texture_id[1]);
+    glBegin(GL_POLYGON);
+      glNormal3f(0,0,-1); 
+      glTexCoord2f(0,0);   
+      glVertex3f(  0.5, -0.5, -0.5 ); 
+      glTexCoord2f(0,1);     
+      glVertex3f(  0.5,  0.5, -0.5 );   
+      glTexCoord2f(1,0);   
+      glVertex3f( -0.5,  0.5, -0.5 );    
+      glTexCoord2f(1,1);  
+      glVertex3f( -0.5, -0.5, -0.5 );      
+       
+    glEnd();
+    
+    glBegin(GL_POLYGON);
+    glNormal3f(0,0,1);
+    glTexCoord2f(0,0);
+      glVertex3f(  0.5, -0.5, 0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5,  0.5, 0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, 0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, 0.5 );
+    glEnd();
+     
+    // Lado roxo - DIREITA
+    glBegin(GL_POLYGON);
+    glNormal3f(1,0,0);
+    glTexCoord2f(0,0);
+      glVertex3f( 0.5, -0.5, -0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f( 0.5,  0.5, -0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( 0.5,  0.5,  0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( 0.5, -0.5,  0.5 );
+    glEnd();
+     
+    // Lado verde - ESQUERDA
+    glBegin(GL_POLYGON);
+      glNormal3f(-1,0,0);
+      glTexCoord2f(0,0);
+      glVertex3f( -0.5, -0.5,  0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f( -0.5,  0.5,  0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, -0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+     
+    // Lado azul - TOPO
+    glBegin(GL_POLYGON);
+      glNormal3f(0,1,0);
+      glTexCoord2f(0,0);
+      glVertex3f(  0.5,  0.5,  0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5,  0.5, -0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, -0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5,  0.5,  0.5 );
+    glEnd();
+     
+    // Lado vermelho - BASE
+    glBegin(GL_POLYGON);
+      glNormal3f(0,-1,0);
+      glTexCoord2f(0,0);
+      glVertex3f(  0.5, -0.5, -0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5, -0.5,  0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5, -0.5,  0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+    glBindTexture(GL_TEXTURE_2D, 0);
+  glPopMatrix();
+          ///
         glPopMatrix();
     }
     glPopMatrix();
 
-    glColor3f(0,1,1);
+    
     glPushMatrix();
     glRotatef(180, 0,1,0);
     glTranslatef(-273,0,-41.9);
-    glColor3f(1,1,0);
+   
           glTranslatef(-20, 143.5 - 20*1.580, 20 + 20*2.247);
           glScalef(80, 1.580, 40);
-          myCube();
+                glPushMatrix();
+    glBindTexture(GL_TEXTURE_2D, texture_id[1]);
+    glBegin(GL_POLYGON);
+      glNormal3f(0,0,-1); 
+      glTexCoord2f(0,0);   
+      glVertex3f(  0.5, -0.5, -0.5 ); 
+      glTexCoord2f(0,1);     
+      glVertex3f(  0.5,  0.5, -0.5 );   
+      glTexCoord2f(1,0);   
+      glVertex3f( -0.5,  0.5, -0.5 );    
+      glTexCoord2f(1,1);  
+      glVertex3f( -0.5, -0.5, -0.5 );      
+       
+    glEnd();
+    
+    glBegin(GL_POLYGON);
+    glNormal3f(0,0,1);
+    glTexCoord2f(0,0);
+      glVertex3f(  0.5, -0.5, 0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5,  0.5, 0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, 0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, 0.5 );
+    glEnd();
+     
+    // Lado roxo - DIREITA
+    glBegin(GL_POLYGON);
+    glNormal3f(1,0,0);
+    glTexCoord2f(0,0);
+      glVertex3f( 0.5, -0.5, -0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f( 0.5,  0.5, -0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( 0.5,  0.5,  0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( 0.5, -0.5,  0.5 );
+    glEnd();
+     
+    // Lado verde - ESQUERDA
+    glBegin(GL_POLYGON);
+      glNormal3f(-1,0,0);
+      glTexCoord2f(0,0);
+      glVertex3f( -0.5, -0.5,  0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f( -0.5,  0.5,  0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, -0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+     
+    // Lado azul - TOPO
+    glBegin(GL_POLYGON);
+      glNormal3f(0,1,0);
+      glTexCoord2f(0,0);
+      glVertex3f(  0.5,  0.5,  0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5,  0.5, -0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, -0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5,  0.5,  0.5 );
+    glEnd();
+     
+    // Lado vermelho - BASE
+    glBegin(GL_POLYGON);
+      glNormal3f(0,-1,0);
+      glTexCoord2f(0,0);
+      glVertex3f(  0.5, -0.5, -0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5, -0.5,  0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5, -0.5,  0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+    glBindTexture(GL_TEXTURE_2D, 0);
+  glPopMatrix();
     glPopMatrix();
 
     
 
-    glColor3f(0,1,0);
+    
     glPushMatrix();
     glTranslatef(312, 0, 7*(2.47));
 
@@ -2456,7 +3436,88 @@ void ladder(){
         glPushMatrix();
           glTranslatef(0, 143.5 - 0.73 - i*1.580, 0 + (-28 + i)*2.247);
           glScalef(40, 1.580, 4.494);
-          myCube();
+          ///
+                glPushMatrix();
+    glBindTexture(GL_TEXTURE_2D, texture_id[1]);
+    glBegin(GL_POLYGON);
+      glNormal3f(0,0,-1); 
+      glTexCoord2f(0,0);   
+      glVertex3f(  0.5, -0.5, -0.5 ); 
+      glTexCoord2f(0,1);     
+      glVertex3f(  0.5,  0.5, -0.5 );   
+      glTexCoord2f(1,0);   
+      glVertex3f( -0.5,  0.5, -0.5 );    
+      glTexCoord2f(1,1);  
+      glVertex3f( -0.5, -0.5, -0.5 );      
+       
+    glEnd();
+    
+    glBegin(GL_POLYGON);
+    glNormal3f(0,0,1);
+    glTexCoord2f(0,0);
+      glVertex3f(  0.5, -0.5, 0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5,  0.5, 0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, 0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, 0.5 );
+    glEnd();
+     
+    // Lado roxo - DIREITA
+    glBegin(GL_POLYGON);
+    glNormal3f(1,0,0);
+    glTexCoord2f(0,0);
+      glVertex3f( 0.5, -0.5, -0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f( 0.5,  0.5, -0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( 0.5,  0.5,  0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( 0.5, -0.5,  0.5 );
+    glEnd();
+     
+    // Lado verde - ESQUERDA
+    glBegin(GL_POLYGON);
+      glNormal3f(-1,0,0);
+      glTexCoord2f(0,0);
+      glVertex3f( -0.5, -0.5,  0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f( -0.5,  0.5,  0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, -0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+     
+    // Lado azul - TOPO
+    glBegin(GL_POLYGON);
+      glNormal3f(0,1,0);
+      glTexCoord2f(0,0);
+      glVertex3f(  0.5,  0.5,  0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5,  0.5, -0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, -0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5,  0.5,  0.5 );
+    glEnd();
+     
+    // Lado vermelho - BASE
+    glBegin(GL_POLYGON);
+      glNormal3f(0,-1,0);
+      glTexCoord2f(0,0);
+      glVertex3f(  0.5, -0.5, -0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5, -0.5,  0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5, -0.5,  0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+    glBindTexture(GL_TEXTURE_2D, 0);
+  glPopMatrix();
+          ///
         glPopMatrix();
     }
       
@@ -2475,11 +3536,90 @@ glPushMatrix();
   glTranslatef(-340, 83.740, 110);
   glRotatef(90,0,1,0);
   glPushMatrix();
-    glColor3f(1,0.5,0.5);
+    glColor3f(1,1,1);
 
     glTranslatef(0,5,0);
     glScalef(20,10,20);
-    myCube();
+          glPushMatrix();
+    glBindTexture(GL_TEXTURE_2D, texture_id[4]);
+    glBegin(GL_POLYGON);
+      glNormal3f(0,0,-1); 
+      glTexCoord2f(0,0);   
+      glVertex3f(  0.5, -0.5, -0.5 ); 
+      glTexCoord2f(0,1);     
+      glVertex3f(  0.5,  0.5, -0.5 );   
+      glTexCoord2f(1,0);   
+      glVertex3f( -0.5,  0.5, -0.5 );    
+      glTexCoord2f(1,1);  
+      glVertex3f( -0.5, -0.5, -0.5 );      
+       
+    glEnd();
+    
+    glBegin(GL_POLYGON);
+    glNormal3f(0,0,1);
+    glTexCoord2f(0,0);
+      glVertex3f(  0.5, -0.5, 0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5,  0.5, 0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, 0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, 0.5 );
+    glEnd();
+     
+    // Lado roxo - DIREITA
+    glBegin(GL_POLYGON);
+    glNormal3f(1,0,0);
+    glTexCoord2f(0,0);
+      glVertex3f( 0.5, -0.5, -0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f( 0.5,  0.5, -0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( 0.5,  0.5,  0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( 0.5, -0.5,  0.5 );
+    glEnd();
+     
+    // Lado verde - ESQUERDA
+    glBegin(GL_POLYGON);
+      glNormal3f(-1,0,0);
+      glTexCoord2f(0,0);
+      glVertex3f( -0.5, -0.5,  0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f( -0.5,  0.5,  0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, -0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+     
+    // Lado azul - TOPO
+    glBegin(GL_POLYGON);
+      glNormal3f(0,1,0);
+      glTexCoord2f(0,0);
+      glVertex3f(  0.5,  0.5,  0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5,  0.5, -0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, -0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5,  0.5,  0.5 );
+    glEnd();
+     
+    // Lado vermelho - BASE
+    glBegin(GL_POLYGON);
+      glNormal3f(0,-1,0);
+      glTexCoord2f(0,0);
+      glVertex3f(  0.5, -0.5, -0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5, -0.5,  0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5, -0.5,  0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+    glBindTexture(GL_TEXTURE_2D, 0);
+  glPopMatrix();
   glPopMatrix();
 
   glColor3f(1,1,0);
@@ -2508,9 +3648,66 @@ void object3(){
     glTranslatef(-88,99,369);
     
     glScalef(16, 9, 1);
-    
-    
-    myCube();
+      glColor3f(1,1,1);
+    glBindTexture(GL_TEXTURE_2D, texture_id[5]);
+    glPushMatrix();
+    glBegin(GL_POLYGON);
+      glNormal3f(0,0,-1);    
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5, -0.5, -0.5 );
+      glTexCoord2f(0,0);
+      glVertex3f(  0.5,  0.5, -0.5 );  
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, -0.5 );  
+       glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, -0.5 );
+      glEnd();
+      glBindTexture(GL_TEXTURE_2D, 0);
+      glColor3f(0,0,0);
+      glBegin(GL_POLYGON);
+    glNormal3f(0,0,1);
+      glVertex3f(  0.5, -0.5, 0.5 );
+      glVertex3f(  0.5,  0.5, 0.5 );
+      glVertex3f( -0.5,  0.5, 0.5 );
+      glVertex3f( -0.5, -0.5, 0.5 );
+    glEnd();
+     
+    // Lado roxo - DIREITA
+    glBegin(GL_POLYGON);
+    glNormal3f(1,0,0);
+      glVertex3f( 0.5, -0.5, -0.5 );
+      glVertex3f( 0.5,  0.5, -0.5 );
+      glVertex3f( 0.5,  0.5,  0.5 );
+      glVertex3f( 0.5, -0.5,  0.5 );
+    glEnd();
+     
+    // Lado verde - ESQUERDA
+    glBegin(GL_POLYGON);
+      glNormal3f(-1,0,0);
+      glVertex3f( -0.5, -0.5,  0.5 );
+      glVertex3f( -0.5,  0.5,  0.5 );
+      glVertex3f( -0.5,  0.5, -0.5 );
+      glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+     
+    // Lado azul - TOPO
+    glBegin(GL_POLYGON);
+      glNormal3f(0,1,0);
+      glVertex3f(  0.5,  0.5,  0.5 );
+      glVertex3f(  0.5,  0.5, -0.5 );
+      glVertex3f( -0.5,  0.5, -0.5 );
+      glVertex3f( -0.5,  0.5,  0.5 );
+    glEnd();
+     
+    // Lado vermelho - BASE
+    glBegin(GL_POLYGON);
+      glNormal3f(0,-1,0);
+      glVertex3f(  0.5, -0.5, -0.5 );
+      glVertex3f(  0.5, -0.5,  0.5 );
+      glVertex3f( -0.5, -0.5,  0.5 );
+      glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+      glPopMatrix();
   glPopMatrix();
 }
 
@@ -2519,14 +3716,73 @@ void object4(){
     glRotatef(90, 0,1,0);
     glTranslatef(-88,129,369);
     
-    glScalef(20, 8, 8);
+    glScalef(20, 8, 1);
+    glColor3f(1,1,1);
     
-    
-    myCube();
+    glBindTexture(GL_TEXTURE_2D, texture_id[6]);
+    glPushMatrix();
+    glBegin(GL_POLYGON);
+      glNormal3f(0,0,-1);    
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5, -0.5, -0.5 );
+      glTexCoord2f(0,0);
+      glVertex3f(  0.5,  0.5, -0.5 );  
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, -0.5 );  
+       glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, -0.5 );
+      glEnd();
+      glBindTexture(GL_TEXTURE_2D, 0);
+      glColor3f(1,1,1);
+      glBegin(GL_POLYGON);
+    glNormal3f(0,0,1);
+      glVertex3f(  0.5, -0.5, 0.5 );
+      glVertex3f(  0.5,  0.5, 0.5 );
+      glVertex3f( -0.5,  0.5, 0.5 );
+      glVertex3f( -0.5, -0.5, 0.5 );
+    glEnd();
+     
+    // Lado roxo - DIREITA
+    glBegin(GL_POLYGON);
+    glNormal3f(1,0,0);
+      glVertex3f( 0.5, -0.5, -0.5 );
+      glVertex3f( 0.5,  0.5, -0.5 );
+      glVertex3f( 0.5,  0.5,  0.5 );
+      glVertex3f( 0.5, -0.5,  0.5 );
+    glEnd();
+     
+    // Lado verde - ESQUERDA
+    glBegin(GL_POLYGON);
+      glNormal3f(-1,0,0);
+      glVertex3f( -0.5, -0.5,  0.5 );
+      glVertex3f( -0.5,  0.5,  0.5 );
+      glVertex3f( -0.5,  0.5, -0.5 );
+      glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+     
+    // Lado azul - TOPO
+    glBegin(GL_POLYGON);
+      glNormal3f(0,1,0);
+      glVertex3f(  0.5,  0.5,  0.5 );
+      glVertex3f(  0.5,  0.5, -0.5 );
+      glVertex3f( -0.5,  0.5, -0.5 );
+      glVertex3f( -0.5,  0.5,  0.5 );
+    glEnd();
+     
+    // Lado vermelho - BASE
+    glBegin(GL_POLYGON);
+      glNormal3f(0,-1,0);
+      glVertex3f(  0.5, -0.5, -0.5 );
+      glVertex3f(  0.5, -0.5,  0.5 );
+      glVertex3f( -0.5, -0.5,  0.5 );
+      glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+      glPopMatrix();
   glPopMatrix();
 }
 
 void object5(){
+  glColor3f(0.8, 0.9, 0.9);
   glRotatef(-90, 0,1,0);
   glTranslatef(120,83,-345);
   glPushMatrix();
@@ -2535,46 +3791,526 @@ void object5(){
     glTranslatef(-10,8.75,0);
       glScalef(1,17.5,1);
       
-      myCube();
+      glPushMatrix();
+    glBindTexture(GL_TEXTURE_2D, texture_id[4]);
+    glBegin(GL_POLYGON);
+      glNormal3f(0,0,-1); 
+      glTexCoord2f(0,0);   
+      glVertex3f(  0.5, -0.5, -0.5 ); 
+      glTexCoord2f(0,1);     
+      glVertex3f(  0.5,  0.5, -0.5 );   
+      glTexCoord2f(1,0);   
+      glVertex3f( -0.5,  0.5, -0.5 );    
+      glTexCoord2f(1,1);  
+      glVertex3f( -0.5, -0.5, -0.5 );      
+       
+    glEnd();
+    
+    glBegin(GL_POLYGON);
+    glNormal3f(0,0,1);
+    glTexCoord2f(0,0);
+      glVertex3f(  0.5, -0.5, 0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5,  0.5, 0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, 0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, 0.5 );
+    glEnd();
+     
+    // Lado roxo - DIREITA
+    glBegin(GL_POLYGON);
+    glNormal3f(1,0,0);
+    glTexCoord2f(0,0);
+      glVertex3f( 0.5, -0.5, -0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f( 0.5,  0.5, -0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( 0.5,  0.5,  0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( 0.5, -0.5,  0.5 );
+    glEnd();
+     
+    // Lado verde - ESQUERDA
+    glBegin(GL_POLYGON);
+      glNormal3f(-1,0,0);
+      glTexCoord2f(0,0);
+      glVertex3f( -0.5, -0.5,  0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f( -0.5,  0.5,  0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, -0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+     
+    // Lado azul - TOPO
+    glBegin(GL_POLYGON);
+      glNormal3f(0,1,0);
+      glTexCoord2f(0,0);
+      glVertex3f(  0.5,  0.5,  0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5,  0.5, -0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, -0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5,  0.5,  0.5 );
+    glEnd();
+     
+    // Lado vermelho - BASE
+    glBegin(GL_POLYGON);
+      glNormal3f(0,-1,0);
+      glTexCoord2f(0,0);
+      glVertex3f(  0.5, -0.5, -0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5, -0.5,  0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5, -0.5,  0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+    glBindTexture(GL_TEXTURE_2D, 0);
+  glPopMatrix();
+  glPopMatrix();
     glPopMatrix();
 
     glPushMatrix();
     glTranslatef(10,8.75,0);
       glScalef(1,17.5,1);
       
-      myCube();
+      glPushMatrix();
+    glBindTexture(GL_TEXTURE_2D, texture_id[4]);
+    glBegin(GL_POLYGON);
+      glNormal3f(0,0,-1); 
+      glTexCoord2f(0,0);   
+      glVertex3f(  0.5, -0.5, -0.5 ); 
+      glTexCoord2f(0,1);     
+      glVertex3f(  0.5,  0.5, -0.5 );   
+      glTexCoord2f(1,0);   
+      glVertex3f( -0.5,  0.5, -0.5 );    
+      glTexCoord2f(1,1);  
+      glVertex3f( -0.5, -0.5, -0.5 );      
+       
+    glEnd();
+    
+    glBegin(GL_POLYGON);
+    glNormal3f(0,0,1);
+    glTexCoord2f(0,0);
+      glVertex3f(  0.5, -0.5, 0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5,  0.5, 0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, 0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, 0.5 );
+    glEnd();
+     
+    // Lado roxo - DIREITA
+    glBegin(GL_POLYGON);
+    glNormal3f(1,0,0);
+    glTexCoord2f(0,0);
+      glVertex3f( 0.5, -0.5, -0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f( 0.5,  0.5, -0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( 0.5,  0.5,  0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( 0.5, -0.5,  0.5 );
+    glEnd();
+     
+    // Lado verde - ESQUERDA
+    glBegin(GL_POLYGON);
+      glNormal3f(-1,0,0);
+      glTexCoord2f(0,0);
+      glVertex3f( -0.5, -0.5,  0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f( -0.5,  0.5,  0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, -0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+     
+    // Lado azul - TOPO
+    glBegin(GL_POLYGON);
+      glNormal3f(0,1,0);
+      glTexCoord2f(0,0);
+      glVertex3f(  0.5,  0.5,  0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5,  0.5, -0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, -0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5,  0.5,  0.5 );
+    glEnd();
+     
+    // Lado vermelho - BASE
+    glBegin(GL_POLYGON);
+      glNormal3f(0,-1,0);
+      glTexCoord2f(0,0);
+      glVertex3f(  0.5, -0.5, -0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5, -0.5,  0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5, -0.5,  0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+    glBindTexture(GL_TEXTURE_2D, 0);
+  glPopMatrix();
+  glPopMatrix();
     glPopMatrix();
 
-    glColor3f(1,0,0);
+    
     glPushMatrix();
       glScalef(35,5,1);
       glTranslatef(0,3,1);
-      myCube();
+      glPushMatrix();
+    glBindTexture(GL_TEXTURE_2D, texture_id[4]);
+    glBegin(GL_POLYGON);
+      glNormal3f(0,0,-1); 
+      glTexCoord2f(0,0);   
+      glVertex3f(  0.5, -0.5, -0.5 ); 
+      glTexCoord2f(0,1);     
+      glVertex3f(  0.5,  0.5, -0.5 );   
+      glTexCoord2f(1,0);   
+      glVertex3f( -0.5,  0.5, -0.5 );    
+      glTexCoord2f(1,1);  
+      glVertex3f( -0.5, -0.5, -0.5 );      
+       
+    glEnd();
+    
+    glBegin(GL_POLYGON);
+    glNormal3f(0,0,1);
+    glTexCoord2f(0,0);
+      glVertex3f(  0.5, -0.5, 0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5,  0.5, 0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, 0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, 0.5 );
+    glEnd();
+     
+    // Lado roxo - DIREITA
+    glBegin(GL_POLYGON);
+    glNormal3f(1,0,0);
+    glTexCoord2f(0,0);
+      glVertex3f( 0.5, -0.5, -0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f( 0.5,  0.5, -0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( 0.5,  0.5,  0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( 0.5, -0.5,  0.5 );
+    glEnd();
+     
+    // Lado verde - ESQUERDA
+    glBegin(GL_POLYGON);
+      glNormal3f(-1,0,0);
+      glTexCoord2f(0,0);
+      glVertex3f( -0.5, -0.5,  0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f( -0.5,  0.5,  0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, -0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+     
+    // Lado azul - TOPO
+    glBegin(GL_POLYGON);
+      glNormal3f(0,1,0);
+      glTexCoord2f(0,0);
+      glVertex3f(  0.5,  0.5,  0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5,  0.5, -0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, -0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5,  0.5,  0.5 );
+    glEnd();
+     
+    // Lado vermelho - BASE
+    glBegin(GL_POLYGON);
+      glNormal3f(0,-1,0);
+      glTexCoord2f(0,0);
+      glVertex3f(  0.5, -0.5, -0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5, -0.5,  0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5, -0.5,  0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+    glBindTexture(GL_TEXTURE_2D, 0);
+  glPopMatrix();
+  glPopMatrix();
     glPopMatrix();
 
-    glColor3f(1,0,0);
+    
     glPushMatrix();
       glTranslatef(0,8,5.5);
       glScalef(35,1,10);
       
-      myCube();
+      glPushMatrix();
+    glBindTexture(GL_TEXTURE_2D, texture_id[4]);
+    glBegin(GL_POLYGON);
+      glNormal3f(0,0,-1); 
+      glTexCoord2f(0,0);   
+      glVertex3f(  0.5, -0.5, -0.5 ); 
+      glTexCoord2f(0,1);     
+      glVertex3f(  0.5,  0.5, -0.5 );   
+      glTexCoord2f(1,0);   
+      glVertex3f( -0.5,  0.5, -0.5 );    
+      glTexCoord2f(1,1);  
+      glVertex3f( -0.5, -0.5, -0.5 );      
+       
+    glEnd();
+    
+    glBegin(GL_POLYGON);
+    glNormal3f(0,0,1);
+    glTexCoord2f(0,0);
+      glVertex3f(  0.5, -0.5, 0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5,  0.5, 0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, 0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, 0.5 );
+    glEnd();
+     
+    // Lado roxo - DIREITA
+    glBegin(GL_POLYGON);
+    glNormal3f(1,0,0);
+    glTexCoord2f(0,0);
+      glVertex3f( 0.5, -0.5, -0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f( 0.5,  0.5, -0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( 0.5,  0.5,  0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( 0.5, -0.5,  0.5 );
+    glEnd();
+     
+    // Lado verde - ESQUERDA
+    glBegin(GL_POLYGON);
+      glNormal3f(-1,0,0);
+      glTexCoord2f(0,0);
+      glVertex3f( -0.5, -0.5,  0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f( -0.5,  0.5,  0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, -0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+     
+    // Lado azul - TOPO
+    glBegin(GL_POLYGON);
+      glNormal3f(0,1,0);
+      glTexCoord2f(0,0);
+      glVertex3f(  0.5,  0.5,  0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5,  0.5, -0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, -0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5,  0.5,  0.5 );
+    glEnd();
+     
+    // Lado vermelho - BASE
+    glBegin(GL_POLYGON);
+      glNormal3f(0,-1,0);
+      glTexCoord2f(0,0);
+      glVertex3f(  0.5, -0.5, -0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5, -0.5,  0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5, -0.5,  0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+    glBindTexture(GL_TEXTURE_2D, 0);
+  glPopMatrix();
+  glPopMatrix();
     glPopMatrix();
 
 
-    glColor3f(1,1,0);
+   
 
     glPushMatrix();
       glTranslatef(10,4,9.5);
       glScalef(1,8,1);
       
-      myCube();
+     glPushMatrix();
+    glBindTexture(GL_TEXTURE_2D, texture_id[4]);
+    glBegin(GL_POLYGON);
+      glNormal3f(0,0,-1); 
+      glTexCoord2f(0,0);   
+      glVertex3f(  0.5, -0.5, -0.5 ); 
+      glTexCoord2f(0,1);     
+      glVertex3f(  0.5,  0.5, -0.5 );   
+      glTexCoord2f(1,0);   
+      glVertex3f( -0.5,  0.5, -0.5 );    
+      glTexCoord2f(1,1);  
+      glVertex3f( -0.5, -0.5, -0.5 );      
+       
+    glEnd();
+    
+    glBegin(GL_POLYGON);
+    glNormal3f(0,0,1);
+    glTexCoord2f(0,0);
+      glVertex3f(  0.5, -0.5, 0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5,  0.5, 0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, 0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, 0.5 );
+    glEnd();
+     
+    // Lado roxo - DIREITA
+    glBegin(GL_POLYGON);
+    glNormal3f(1,0,0);
+    glTexCoord2f(0,0);
+      glVertex3f( 0.5, -0.5, -0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f( 0.5,  0.5, -0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( 0.5,  0.5,  0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( 0.5, -0.5,  0.5 );
+    glEnd();
+     
+    // Lado verde - ESQUERDA
+    glBegin(GL_POLYGON);
+      glNormal3f(-1,0,0);
+      glTexCoord2f(0,0);
+      glVertex3f( -0.5, -0.5,  0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f( -0.5,  0.5,  0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, -0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+     
+    // Lado azul - TOPO
+    glBegin(GL_POLYGON);
+      glNormal3f(0,1,0);
+      glTexCoord2f(0,0);
+      glVertex3f(  0.5,  0.5,  0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5,  0.5, -0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, -0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5,  0.5,  0.5 );
+    glEnd();
+     
+    // Lado vermelho - BASE
+    glBegin(GL_POLYGON);
+      glNormal3f(0,-1,0);
+      glTexCoord2f(0,0);
+      glVertex3f(  0.5, -0.5, -0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5, -0.5,  0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5, -0.5,  0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+    glBindTexture(GL_TEXTURE_2D, 0);
+  glPopMatrix();
+  glPopMatrix();
     glPopMatrix();
 
     glPushMatrix();
       glTranslatef(-10,4,9.5);
       glScalef(1,8,1);
       
-      myCube();
+      glPushMatrix();
+    glBindTexture(GL_TEXTURE_2D, texture_id[4]);
+    glBegin(GL_POLYGON);
+      glNormal3f(0,0,-1); 
+      glTexCoord2f(0,0);   
+      glVertex3f(  0.5, -0.5, -0.5 ); 
+      glTexCoord2f(0,1);     
+      glVertex3f(  0.5,  0.5, -0.5 );   
+      glTexCoord2f(1,0);   
+      glVertex3f( -0.5,  0.5, -0.5 );    
+      glTexCoord2f(1,1);  
+      glVertex3f( -0.5, -0.5, -0.5 );      
+       
+    glEnd();
+    
+    glBegin(GL_POLYGON);
+    glNormal3f(0,0,1);
+    glTexCoord2f(0,0);
+      glVertex3f(  0.5, -0.5, 0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5,  0.5, 0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, 0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, 0.5 );
+    glEnd();
+     
+    // Lado roxo - DIREITA
+    glBegin(GL_POLYGON);
+    glNormal3f(1,0,0);
+    glTexCoord2f(0,0);
+      glVertex3f( 0.5, -0.5, -0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f( 0.5,  0.5, -0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( 0.5,  0.5,  0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( 0.5, -0.5,  0.5 );
+    glEnd();
+     
+    // Lado verde - ESQUERDA
+    glBegin(GL_POLYGON);
+      glNormal3f(-1,0,0);
+      glTexCoord2f(0,0);
+      glVertex3f( -0.5, -0.5,  0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f( -0.5,  0.5,  0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, -0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+     
+    // Lado azul - TOPO
+    glBegin(GL_POLYGON);
+      glNormal3f(0,1,0);
+      glTexCoord2f(0,0);
+      glVertex3f(  0.5,  0.5,  0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5,  0.5, -0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5,  0.5, -0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5,  0.5,  0.5 );
+    glEnd();
+     
+    // Lado vermelho - BASE
+    glBegin(GL_POLYGON);
+      glNormal3f(0,-1,0);
+      glTexCoord2f(0,0);
+      glVertex3f(  0.5, -0.5, -0.5 );
+      glTexCoord2f(0,1);
+      glVertex3f(  0.5, -0.5,  0.5 );
+      glTexCoord2f(1,0);
+      glVertex3f( -0.5, -0.5,  0.5 );
+      glTexCoord2f(1,1);
+      glVertex3f( -0.5, -0.5, -0.5 );
+    glEnd();
+    glBindTexture(GL_TEXTURE_2D, 0);
+  glPopMatrix();
+  glPopMatrix();
     glPopMatrix();
 
     glPopMatrix();
@@ -2604,11 +4340,9 @@ void Timer(int value)
     glutPostRedisplay();
     glutTimerFunc(433,Timer, 1);
 }
-
-// Common Render Items for all subwindows
 void renderScene2() { //desenha os objetos
 
-  // Draw ground
+  
   glPushMatrix();
   glColor3f(1.0f, 1.0f, 1.0f);
   glBindTexture(GL_TEXTURE_2D, texture_id[0]);
@@ -2656,13 +4390,15 @@ glBindTexture(GL_TEXTURE_2D, 0);
 
   
   firstFloor();
+  //object1(1);
+  pictures();
   secondFloor();
   elevator();
   roof();
   windows();
   support();
 
-  pictures();
+  
 
   ladder();
 
@@ -2831,6 +4567,84 @@ void init() {
   glutMotionFunc(mouseMove);
   glutTimerFunc(133, Timer, 1);
   initTextures();
+  //BEGIN - ILUMINATION
+
+    GLfloat luzAmbiente[4]={0.3,0.3,0.3,1.0}; 
+  //GLfloat luzDifusa[4]={0.7,0.7,0.7,1.0};    // "cor" 
+  //GLfloat luzEspecular[4]={1.0, 1.0, 1.0, 1.0};// "brilho" 
+  GLfloat posicaoLuz[4]={0.0, 50.0, 50.0, 1.0};
+
+  //ATIVAR
+  //Posições das luzes nos interiores, falta dar as coordenadas x, y e z
+  GLfloat posicaoLuz1[4] = {150, 120, 0, 1.0}; 
+  GLfloat posicaoLuz2[4] = {-150, 120, 0, 1.0};
+  GLfloat posicaoLuz3[4] = {150, 170, 0, 1.0};
+  GLfloat posicaoLuz4[4] = {-150, 170, 0, 1.0};
+  GLfloat direction[3] = {0.0, 1.0, 0.0};
+  
+
+  // Capacidade de brilho do material
+  GLfloat especularidade[4]={1.0,1.0,1.0,1.0}; 
+  GLint especMaterial = 60;
+
+  // Especifica que a cor de fundo da janela será preta
+  glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+  
+  // Habilita o modelo de colorização de Gouraud
+  glShadeModel(GL_SMOOTH);
+
+  // Define a refletância do material 
+  glMaterialfv(GL_FRONT,GL_SPECULAR, especularidade);
+  // Define a concentração do brilho
+  glMateriali(GL_FRONT,GL_SHININESS,especMaterial);
+
+  // Ativa o uso da luz ambiente 
+  glLightModelfv(GL_LIGHT_MODEL_AMBIENT, luzAmbiente);
+
+  // Define os parâmetros da luz de número 0
+  glLightfv(GL_LIGHT0, GL_AMBIENT, luzAmbiente); 
+  //glLightfv(GL_LIGHT0, GL_DIFFUSE, luzDifusa );
+  //glLightfv(GL_LIGHT0, GL_SPECULAR, luzEspecular );
+  
+  
+  //Luzes interiores
+  glLightfv(GL_LIGHT1, GL_POSITION, posicaoLuz1);
+  glLightf(GL_LIGHT1, GL_SPOT_CUTOFF, 45.0);
+  glLightfv(GL_LIGHT1, GL_SPOT_DIRECTION, direction);
+  
+  glLightfv(GL_LIGHT2, GL_POSITION, posicaoLuz2);
+  glLightf(GL_LIGHT2, GL_SPOT_CUTOFF, 45.0);
+  glLightfv(GL_LIGHT2, GL_SPOT_DIRECTION, direction);
+  
+  glLightfv(GL_LIGHT3, GL_POSITION, posicaoLuz3);
+  glLightf(GL_LIGHT3, GL_SPOT_CUTOFF, 45.0);
+  glLightfv(GL_LIGHT3, GL_SPOT_DIRECTION, direction);
+
+  glLightfv(GL_LIGHT4, GL_POSITION, posicaoLuz4);
+  glLightf(GL_LIGHT4, GL_SPOT_CUTOFF, 45.0);
+  glLightfv(GL_LIGHT4, GL_SPOT_DIRECTION, direction);
+
+  
+
+  // Habilita a definição da cor do material a partir da cor corrente
+  glEnable(GL_COLOR_MATERIAL);
+  //Habilita o uso de iluminação
+  glEnable(GL_LIGHTING);  
+  // Habilita a luz de número 0
+  glEnable(GL_LIGHT0);
+
+ 
+  //Luzes dos pisos 
+  glEnable(GL_LIGHT1);
+  glEnable(GL_LIGHT2);
+  glEnable(GL_LIGHT3);
+  glEnable(GL_LIGHT4);
+  
+
+  // Habilita o depth-buffering
+  glEnable(GL_DEPTH_TEST);
+
+  //END - ILUMINATION
 
 
 }
